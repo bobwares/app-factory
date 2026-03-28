@@ -1,0 +1,68 @@
+# App: app-factory
+# File: docker-compose.yml
+# Version: 0.1.0
+# Turns: 5
+# Author: AI Coding Agent (Claude Opus 4.5)
+# Date: 2026-03-28T21:45:00Z
+# Description: PostgreSQL service with pgAdmin for local development
+# Log:
+# 5, 0.1.0, 2026/03/28, 09:45 PM, Claude Opus 4.5
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgresql-service
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-appuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-apppass}
+      POSTGRES_DB: ${POSTGRES_DB:-appdb}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d/migrations:ro
+      - ./seeds:/docker-entrypoint-initdb.d/seeds:ro
+      - ./scripts/init-db.sh:/docker-entrypoint-initdb.d/00_init-db.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-appuser} -d ${POSTGRES_DB:-appdb}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - persistence-network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: postgresql-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@local.dev}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - persistence-network
+    profiles:
+      - tools
+
+volumes:
+  postgres_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  persistence-network:
+    driver: bridge
+    name: persistence-network

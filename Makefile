@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+export DOCKER_HOST ?= tcp://server-docker:2375
+
 ROOT_DIR := $(abspath .)
 IMPLEMENTATIONS_DIR ?= $(ROOT_DIR)/tech-stack-implementations
 PROFILE_FILES := $(shell find tech-stack-profiles -type f -name '*.yaml' -print | LC_ALL=C sort)
