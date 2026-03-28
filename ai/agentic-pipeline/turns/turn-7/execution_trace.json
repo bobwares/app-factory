@@ -1,0 +1,8 @@
+{
+  "turnId": "7",
+  "startedAt": "2026-03-28T21:15:00Z",
+  "finishedAt": "2026-03-28T21:20:00Z",
+  "skillsExecuted": ["session-start", "turn-init", "turn-end"],
+  "agentsExecuted": ["claude"],
+  "notes": "Created local Claude skill for listing tech-stack-profiles"
+}
