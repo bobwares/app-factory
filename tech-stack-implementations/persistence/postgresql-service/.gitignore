@@ -1,0 +1,10 @@
+# Environment files with secrets
+.env
+.env.local
+
+# Data volumes (if mounted locally)
+data/
+
+# IDE
+.idea/
+.vscode/
