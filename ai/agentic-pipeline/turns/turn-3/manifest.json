@@ -1,0 +1,41 @@
+{
+  "turnId": "3",
+  "createdAt": "2026-03-28T18:55:43Z",
+  "profile": "root-tech-stack-launcher",
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-3/execution_trace.json",
+    "skillsExecuted": ["session-start", "turn-end", "turn-init"],
+    "agentsExecuted": ["codex"]
+  },
+  "artifacts": {
+    "turnArtifacts": [
+      {
+        "path": "ai/agentic-pipeline/turns/turn-3/turn_context.md",
+        "type": "context"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-3/execution_trace.json",
+        "type": "trace"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-3/pull_request.md",
+        "type": "pr"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-3/adr.md",
+        "type": "adr"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-3/manifest.json",
+        "type": "manifest"
+      }
+    ],
+    "sourceFiles": [
+      {
+        "path": "Makefile",
+        "sha256": "7ddeaae1e57391f2f1f5c862a96c640098f0947b10b7875aef3880183e30db0d",
+        "version": "N/A"
+      }
+    ]
+  }
+}
