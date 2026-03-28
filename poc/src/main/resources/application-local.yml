@@ -1,0 +1,26 @@
+# App: api
+# File: application-local.yml
+# Version: 0.1.0
+# Turns: 2
+# Author: AI Coding Agent (Claude Opus 4.5)
+# Date: 2026-03-28T17:15:00Z
+# Description: Local development profile configuration
+# Log:
+# 2, 0.1.0, 2026/03/28, 05:15 PM, Claude Opus 4.5
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
