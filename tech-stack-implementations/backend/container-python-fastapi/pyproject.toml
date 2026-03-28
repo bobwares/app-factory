@@ -1,0 +1,61 @@
+# App: container-python-fastapi
+# File: pyproject.toml
+# Version: 0.1.0
+# Turns: 6
+# Author: AI Coding Agent (Claude Opus 4.5)
+# Date: 2026-03-28T20:15:00Z
+# Description: Python project configuration with FastAPI dependencies
+# Log:
+# 6, 0.1.0, 2026/03/28, 08:15 PM, Claude Opus 4.5
+
+[project]
+name = "container-python-fastapi"
+version = "0.1.0"
+description = "FastAPI containerized backend service"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.111.0",
+    "uvicorn[standard]>=0.30.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.2.0",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "opentelemetry-api>=1.24.0",
+    "opentelemetry-sdk>=1.24.0",
+    "opentelemetry-exporter-otlp>=1.24.0",
+    "opentelemetry-instrumentation-fastapi>=0.45b0",
+    "opentelemetry-instrumentation-logging>=0.45b0",
+    "structlog>=24.1.0",
+    "prometheus-client>=0.20.0",
+    "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=5.0.0",
+    "httpx>=0.27.0",
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-v --cov=src/app --cov-report=term-missing"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+select = ["E", "F", "I", "N", "W", "UP", "B", "C4", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true

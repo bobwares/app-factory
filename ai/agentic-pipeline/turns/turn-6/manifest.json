@@ -1,0 +1,65 @@
+{
+  "turnId": "6",
+  "createdAt": "2026-03-28T20:08:50Z",
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-6/execution_trace.json",
+    "skillsExecuted": ["turn-init", "turn-end"],
+    "agentsExecuted": ["claude"]
+  },
+  "artifacts": {
+    "turn_context.md": {
+      "path": "ai/agentic-pipeline/turns/turn-6/turn_context.md",
+      "sha256": "a5d388cdb4cf227d17f31fdd0f71bd0dcd0fef85dabe414dd0648358f89a1f69"
+    },
+    "execution_trace.json": {
+      "path": "ai/agentic-pipeline/turns/turn-6/execution_trace.json",
+      "sha256": "683ba44780650b1d85297639f98b8d79837f7f27c2296dfe464b18050ead1e3f"
+    },
+    "pull_request.md": {
+      "path": "ai/agentic-pipeline/turns/turn-6/pull_request.md",
+      "sha256": "98b2118db5b795db434af1707cb4e803cfbc4106a8ef593b0af0e9d3791e89ec"
+    },
+    "adr.md": {
+      "path": "ai/agentic-pipeline/turns/turn-6/adr.md",
+      "sha256": "abee38adf5764938caa0d8386a6ef026708ed63f89130d7b5d7264fac12516a1"
+    }
+  },
+  "sourceFiles": {
+    "backend": [
+      "tech-stack-implementations/backend/container-python-fastapi/pyproject.toml",
+      "tech-stack-implementations/backend/container-python-fastapi/Dockerfile",
+      "tech-stack-implementations/backend/container-python-fastapi/docker-compose.yml",
+      "tech-stack-implementations/backend/container-python-fastapi/src/app/main.py",
+      "tech-stack-implementations/backend/container-python-fastapi/src/app/core/config.py",
+      "tech-stack-implementations/backend/container-python-fastapi/src/app/core/logging.py",
+      "tech-stack-implementations/backend/container-python-fastapi/src/app/core/tracing.py",
+      "tech-stack-implementations/backend/container-python-fastapi/src/app/core/auth.py",
+      "tech-stack-implementations/backend/container-python-fastapi/src/app/core/exceptions.py",
+      "tech-stack-implementations/backend/container-python-fastapi/src/app/middleware/correlation_id.py",
+      "tech-stack-implementations/backend/container-python-fastapi/src/app/models/response.py",
+      "tech-stack-implementations/backend/container-python-fastapi/src/app/api/health.py",
+      "tech-stack-implementations/backend/container-python-fastapi/tests/test_health.py"
+    ],
+    "ui": [
+      "tech-stack-implementations/ui/react-spa-container-nginx/package.json",
+      "tech-stack-implementations/ui/react-spa-container-nginx/tsconfig.json",
+      "tech-stack-implementations/ui/react-spa-container-nginx/vite.config.ts",
+      "tech-stack-implementations/ui/react-spa-container-nginx/Dockerfile",
+      "tech-stack-implementations/ui/react-spa-container-nginx/nginx/nginx.conf",
+      "tech-stack-implementations/ui/react-spa-container-nginx/src/main.tsx",
+      "tech-stack-implementations/ui/react-spa-container-nginx/src/App.tsx",
+      "tech-stack-implementations/ui/react-spa-container-nginx/src/components/Layout.tsx",
+      "tech-stack-implementations/ui/react-spa-container-nginx/src/components/Home.tsx",
+      "tech-stack-implementations/ui/react-spa-container-nginx/src/hooks/useHealthCheck.ts",
+      "tech-stack-implementations/ui/react-spa-container-nginx/src/lib/api.ts",
+      "tech-stack-implementations/ui/react-spa-container-nginx/src/types/api.ts",
+      "tech-stack-implementations/ui/react-spa-container-nginx/src/test/App.test.tsx"
+    ],
+    "stacks": [
+      "tech-stack-implementations/stacks/container-python-fastapi__react-spa-container-nginx/docker-compose.yml",
+      "tech-stack-implementations/stacks/container-python-fastapi__react-spa-container-nginx/otel-collector-config.yaml",
+      "tech-stack-implementations/stacks/container-python-fastapi__react-spa-container-nginx/prometheus.yml",
+      "tech-stack-implementations/stacks/container-python-fastapi__react-spa-container-nginx/README.md"
+    ]
+  }
+}

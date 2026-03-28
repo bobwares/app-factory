@@ -1,0 +1,8 @@
+{
+  "turnId": "6",
+  "startedAt": "2026-03-28T20:15:00Z",
+  "finishedAt": "2026-03-28T20:08:50Z",
+  "skillsExecuted": ["turn-init", "turn-end"],
+  "agentsExecuted": ["claude"],
+  "notes": "Implementing container-python-fastapi__react-spa-container-nginx combined stack"
+}

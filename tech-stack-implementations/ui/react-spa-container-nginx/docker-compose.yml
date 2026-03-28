@@ -1,0 +1,28 @@
+# App: react-spa-container-nginx
+# File: docker-compose.yml
+# Version: 0.1.0
+# Turns: 6
+# Author: AI Coding Agent (Claude Opus 4.5)
+# Date: 2026-03-28T20:15:00Z
+# Description: Local development stack for React SPA
+# Log:
+# 6, 0.1.0, 2026/03/28, 08:15 PM, Claude Opus 4.5
+
+services:
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
