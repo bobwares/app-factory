@@ -1,0 +1,8 @@
+{
+  "turnId": "8",
+  "startedAt": "2026-03-28T21:19:36Z",
+  "finishedAt": "2026-03-28T21:21:30Z",
+  "skillsExecuted": ["branch-guard", "session-start", "turn-end", "turn-init"],
+  "agentsExecuted": ["codex"],
+  "notes": "Added a root .gitignore for mixed-language repository artifacts."
+}
