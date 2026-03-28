@@ -1,0 +1,43 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: container-typescript-nestjs
+  category: backend
+  platform: container
+  language: typescript
+  framework: nestjs
+  cloud:
+    provider: aws
+    services:
+      - ecs-fargate
+      - ecr
+      - cloudwatch
+      - xray
+  runtime:
+    name: nodejs
+    version: "22"
+    packaging: container-image
+    webServer: fastify
+    asyncModel: request-response
+  api:
+    style: rest
+    authModes:
+      - oauth2-jwt
+      - session
+      - iam-via-ingress
+  serviceConventions:
+    dependencyInjection: nestjs
+    validation: class-validator
+    serialization: class-transformer
+    testing: vitest
+    buildTool: npm
+  observability:
+    structuredLogging: true
+    tracing: opentelemetry
+    metrics: prometheus-compatible
+    correlationId: x-correlation-id
+  defaults:
+    persistenceProfileRef: persistence/postgresql-service
+    preferredIacProfileRefs:
+      - iac/terraform-aws-ecs-fargate
+      - iac/docker-compose-local-dev

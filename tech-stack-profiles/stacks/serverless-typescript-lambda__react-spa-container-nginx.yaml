@@ -1,0 +1,25 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: serverless-typescript-lambda__react-spa-container-nginx
+  category: stack
+  topology: mixed
+  description: serverless-backend-plus-container-ui
+  composition:
+    backendProfileRef: backend/serverless-typescript-lambda
+    uiProfileRef: ui/react-spa-container-nginx
+    persistenceProfileRef: persistence/dynamodb-single-table
+    iacProfileRefs:
+      - iac/aws-sam-serverless
+      - iac/terraform-aws-ecs-ui
+      - iac/docker-compose-local-dev
+  deployment:
+    cloudProvider: aws
+    environmentStrategy:
+      - local
+      - dev
+      - test
+      - prod
+  defaults:
+    apiStyle: rest
+    authMode: jwt

@@ -1,0 +1,43 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: serverless-typescript-lambda
+  category: backend
+  platform: serverless
+  language: typescript
+  framework: lambda-handlers
+  cloud:
+    provider: aws
+    services:
+      - api-gateway
+      - lambda
+      - cloudwatch
+      - xray
+  runtime:
+    name: nodejs
+    version: "22"
+    packaging: zip
+    handlerStyle: per-route-handler
+    asyncModel: event-driven
+  api:
+    style: rest
+    gateway: api-gateway-http-api
+    authModes:
+      - jwt
+      - iam
+      - custom-authorizer
+  serviceConventions:
+    dependencyInjection: lightweight-factory
+    validation: zod
+    serialization: typed-contracts
+    testing: vitest
+  observability:
+    structuredLogging: true
+    tracing: xray
+    metrics: cloudwatch-embedded-metrics
+    correlationId: x-correlation-id
+  defaults:
+    persistenceProfileRef: persistence/dynamodb-single-table
+    preferredIacProfileRefs:
+      - iac/aws-sam-serverless
+      - iac/docker-compose-local-dev

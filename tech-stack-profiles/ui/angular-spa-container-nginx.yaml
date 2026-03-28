@@ -1,0 +1,30 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: angular-spa-container-nginx
+  category: ui
+  framework: angular
+  language: typescript
+  platform: container
+  delivery:
+    architecture: single-page-application
+    webServer: nginx
+    packaging: container-image
+  build:
+    toolchain: angular-cli
+    packageManager: npm
+    nodeVersion: "22"
+  routing:
+    mode: client-side
+    fallbackRewrite: true
+  testing:
+    unit: jest
+    component: angular-testing-utilities
+    e2e: playwright
+  observability:
+    rum: optional
+    sourceMaps: true
+  defaults:
+    preferredIacProfileRefs:
+      - iac/terraform-aws-ecs-ui
+      - iac/docker-compose-local-dev

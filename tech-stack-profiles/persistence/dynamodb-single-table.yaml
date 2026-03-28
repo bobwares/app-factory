@@ -1,0 +1,23 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: dynamodb-single-table
+  category: persistence
+  engine: dynamodb
+  pattern: single-table
+  platformFit:
+    preferredFor:
+      - serverless
+  schemaStrategy:
+    keyModel:
+      partitionKey: pk
+      sortKey: sk
+    globalSecondaryIndexes:
+      enabled: true
+    ttl:
+      enabled: true
+  migrations:
+    model: declarative-table-definition
+    seedSupport: true
+  localDevelopment:
+    engine: dynamodb-local

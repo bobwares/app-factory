@@ -1,0 +1,24 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: container-typescript-nestjs__react-spa-container-nginx
+  category: stack
+  topology: container
+  description: containerized-backend-plus-containerized-ui
+  composition:
+    backendProfileRef: backend/container-typescript-nestjs
+    uiProfileRef: ui/react-spa-container-nginx
+    persistenceProfileRef: persistence/postgresql-service
+    iacProfileRefs:
+      - iac/terraform-aws-ecs-fargate
+      - iac/docker-compose-local-dev
+  deployment:
+    cloudProvider: aws
+    environmentStrategy:
+      - local
+      - dev
+      - test
+      - prod
+  defaults:
+    apiStyle: rest
+    authMode: jwt

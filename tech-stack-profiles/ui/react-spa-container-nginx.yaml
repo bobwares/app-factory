@@ -1,0 +1,30 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: react-spa-container-nginx
+  category: ui
+  framework: react
+  language: typescript
+  platform: container
+  delivery:
+    architecture: single-page-application
+    webServer: nginx
+    packaging: container-image
+  build:
+    toolchain: vite
+    packageManager: npm
+    nodeVersion: "22"
+  routing:
+    mode: client-side
+    fallbackRewrite: true
+  testing:
+    unit: vitest
+    component: testing-library
+    e2e: playwright
+  observability:
+    rum: optional
+    sourceMaps: true
+  defaults:
+    preferredIacProfileRefs:
+      - iac/terraform-aws-ecs-ui
+      - iac/docker-compose-local-dev

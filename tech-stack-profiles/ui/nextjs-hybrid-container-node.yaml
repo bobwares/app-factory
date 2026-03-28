@@ -1,0 +1,47 @@
+# App: target-tech-stack-profiles
+# File: nextjs-hybrid-container-node.yaml
+# Version: 0.1.0
+# Turns: T001
+# Author: AI Coding Agent (Claude Opus 4.5)
+# Date: 2026-03-26T12:00:00Z
+# Description: Next.js hybrid rendering UI profile with Node.js container deployment
+
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: nextjs-hybrid-container-node
+  category: ui
+  framework: nextjs
+  language: typescript
+  platform: container
+  delivery:
+    architecture: hybrid
+    renderingModes:
+      - server-side-rendering
+      - static-site-generation
+      - client-side-rendering
+    webServer: node
+    packaging: container-image
+  build:
+    toolchain: next-cli
+    packageManager: npm
+    nodeVersion: "22"
+  routing:
+    mode: file-based
+    serverSideRouting: true
+    appRouter: true
+  apiRoutes:
+    enabled: true
+    location: app/api
+  testing:
+    unit: vitest
+    component: testing-library
+    e2e: playwright
+  observability:
+    rum: optional
+    sourceMaps: true
+    serverTracing: true
+  defaults:
+    preferredIacProfileRefs:
+      - iac/terraform-aws-ecs-fargate
+      - iac/docker-compose-local-dev

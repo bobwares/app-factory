@@ -1,0 +1,27 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: terraform-aws-serverless
+  category: iac
+  tool: terraform
+  platform: aws-serverless
+  supports:
+    backendPlatforms:
+      - serverless
+    uiPlatforms: []
+  artifacts:
+    - main.tf
+    - variables.tf
+    - outputs.tf
+    - modules
+  capabilities:
+    - api-gateway
+    - lambda
+    - dynamodb
+    - cloudwatch
+    - xray
+  stateManagement:
+    mode: remote-state
+    backend: s3-and-dynamodb-lock
+  secrets:
+    mode: aws-ssm-or-secrets-manager

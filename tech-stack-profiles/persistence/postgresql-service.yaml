@@ -1,0 +1,19 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: postgresql-service
+  category: persistence
+  engine: postgresql
+  pattern: relational-service
+  platformFit:
+    preferredFor:
+      - container
+  schemaStrategy:
+    migrations: required
+    indexes: explicit
+    constraints: explicit
+  migrations:
+    model: versioned-migrations
+    seedSupport: true
+  localDevelopment:
+    engine: postgres-container

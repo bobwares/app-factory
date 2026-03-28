@@ -1,0 +1,24 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: aws-sam-serverless
+  category: iac
+  tool: aws-sam
+  platform: aws-serverless
+  supports:
+    backendPlatforms:
+      - serverless
+    uiPlatforms: []
+  artifacts:
+    - template.yaml
+    - samconfig.toml
+  capabilities:
+    - api-gateway
+    - lambda
+    - dynamodb
+    - cloudwatch
+    - xray
+  stateManagement:
+    mode: cloudformation-managed
+  secrets:
+    mode: aws-ssm-or-secrets-manager

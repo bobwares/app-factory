@@ -1,0 +1,25 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: helm-kubernetes-packaging
+  category: iac
+  tool: helm
+  platform: kubernetes
+  supports:
+    backendPlatforms:
+      - container
+    uiPlatforms:
+      - container
+  artifacts:
+    - Chart.yaml
+    - values.yaml
+    - templates
+  capabilities:
+    - deployment-packaging
+    - ingress
+    - configmaps
+    - secrets
+  stateManagement:
+    mode: delegated-to-cluster-tooling
+  secrets:
+    mode: external-secrets

@@ -1,0 +1,25 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: aws-cdk-serverless-typescript
+  category: iac
+  tool: aws-cdk
+  platform: aws-serverless
+  language: typescript
+  supports:
+    backendPlatforms:
+      - serverless
+    uiPlatforms: []
+  artifacts:
+    - cdk-app
+    - stacks
+  capabilities:
+    - api-gateway
+    - lambda
+    - dynamodb
+    - cloudwatch
+    - xray
+  stateManagement:
+    mode: cloudformation-managed
+  secrets:
+    mode: aws-ssm-or-secrets-manager

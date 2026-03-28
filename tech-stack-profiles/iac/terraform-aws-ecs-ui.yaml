@@ -1,0 +1,27 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: terraform-aws-ecs-ui
+  category: iac
+  tool: terraform
+  platform: aws-ui-containers
+  supports:
+    backendPlatforms: []
+    uiPlatforms:
+      - container
+  artifacts:
+    - main.tf
+    - variables.tf
+    - outputs.tf
+    - modules
+  capabilities:
+    - vpc
+    - alb-or-cloudfront-origin
+    - ecs-fargate
+    - ecr
+    - cloudwatch
+  stateManagement:
+    mode: remote-state
+    backend: s3-and-dynamodb-lock
+  secrets:
+    mode: aws-secrets-manager

@@ -1,0 +1,25 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: docker-compose-local-dev
+  category: iac
+  tool: docker-compose
+  platform: local-development
+  supports:
+    backendPlatforms:
+      - serverless
+      - container
+    uiPlatforms:
+      - container
+  artifacts:
+    - compose.yaml
+    - env-files
+  capabilities:
+    - local-app-network
+    - local-postgres
+    - local-dynamodb
+    - local-ui
+  stateManagement:
+    mode: local-only
+  secrets:
+    mode: local-env-files

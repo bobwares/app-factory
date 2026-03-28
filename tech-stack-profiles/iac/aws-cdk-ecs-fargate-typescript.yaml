@@ -1,0 +1,27 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: aws-cdk-ecs-fargate-typescript
+  category: iac
+  tool: aws-cdk
+  platform: aws-containers
+  language: typescript
+  supports:
+    backendPlatforms:
+      - container
+    uiPlatforms:
+      - container
+  artifacts:
+    - cdk-app
+    - stacks
+  capabilities:
+    - vpc
+    - alb
+    - ecs-fargate
+    - ecr
+    - cloudwatch
+    - rds-postgresql
+  stateManagement:
+    mode: cloudformation-managed
+  secrets:
+    mode: aws-secrets-manager

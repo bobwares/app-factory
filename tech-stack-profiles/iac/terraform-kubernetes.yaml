@@ -1,0 +1,28 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: terraform-kubernetes
+  category: iac
+  tool: terraform
+  platform: kubernetes
+  supports:
+    backendPlatforms:
+      - container
+    uiPlatforms:
+      - container
+  artifacts:
+    - main.tf
+    - variables.tf
+    - outputs.tf
+    - helm-values
+  capabilities:
+    - cluster
+    - ingress
+    - deployments
+    - services
+    - secrets
+    - postgres-operator-or-managed-db
+  stateManagement:
+    mode: remote-state
+  secrets:
+    mode: external-secrets
