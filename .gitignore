@@ -2,13 +2,18 @@
 .DS_Store
 Thumbs.db
 
-# Editors and local tooling
+# JetBrains IDE
 .idea/
-.vscode/
 *.iml
+*.ipr
+*.iws
+
+# Editors and local tooling
+.vscode/
 *.swp
 *.swo
 .claude/settings.local.json
+
 
 # Environment files
 .env
