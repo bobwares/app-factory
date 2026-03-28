@@ -1,0 +1,45 @@
+# App: api
+# File: otel-collector-config.yaml
+# Version: 0.1.0
+# Turns: 2
+# Author: AI Coding Agent (Claude Opus 4.5)
+# Date: 2026-03-28T17:15:00Z
+# Description: otel-collector-config.yaml configuration for local development
+# Log:
+# 2, 0.1.0, 2026/03/28, 05:15 PM, Claude Opus 4.5
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 1024
+
+exporters:
+  logging:
+    verbosity: detailed
+
+  # Uncomment for AWS X-Ray export
+  # awsxray:
+  #   region: us-east-1
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging]

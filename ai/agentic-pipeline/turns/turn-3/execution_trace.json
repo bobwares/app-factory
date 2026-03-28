@@ -1,0 +1,14 @@
+{
+  "turnId": "3",
+  "startedAt": "2026-03-28T18:52:07Z",
+  "skillsExecuted": [
+    "session-start",
+    "turn-end",
+    "turn-init"
+  ],
+  "agentsExecuted": [
+    "codex"
+  ],
+  "finishedAt": "2026-03-28T18:55:43Z",
+  "notes": ""
+}
