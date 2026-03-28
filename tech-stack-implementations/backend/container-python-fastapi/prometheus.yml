@@ -1,0 +1,23 @@
+# App: container-python-fastapi
+# File: prometheus.yml
+# Version: 0.1.0
+# Turns: 6
+# Author: AI Coding Agent (Claude Opus 4.5)
+# Date: 2026-03-28T20:15:00Z
+# Description: Prometheus configuration for metrics scraping
+# Log:
+# 6, 0.1.0, 2026/03/28, 08:15 PM, Claude Opus 4.5
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'otel-collector'
+    static_configs:
+      - targets: ['otel-collector:8889']
+
+  - job_name: 'fastapi'
+    static_configs:
+      - targets: ['app:8000']
+    metrics_path: /metrics

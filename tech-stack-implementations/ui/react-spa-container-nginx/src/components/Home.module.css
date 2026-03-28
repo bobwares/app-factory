@@ -1,0 +1,55 @@
+/**
+ * App: react-spa-container-nginx
+ * File: Home.module.css
+ * Version: 0.1.0
+ * Turns: 6
+ */
+
+.container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.result {
+  margin-top: 1.5rem;
+  text-align: left;
+  padding: 1rem;
+  background: rgba(0, 255, 0, 0.1);
+  border-radius: 8px;
+}
+
+.result p {
+  margin: 0.5rem 0;
+}
+
+.error {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: 8px;
+  color: #ff6b6b;
+}

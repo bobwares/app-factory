@@ -1,0 +1,76 @@
+# App: container-python-fastapi
+# File: docker-compose.yml
+# Version: 0.1.0
+# Turns: 6
+# Author: AI Coding Agent (Claude Opus 4.5)
+# Date: 2026-03-28T20:15:00Z
+# Description: Local development stack with OTEL collector and Jaeger
+# Log:
+# 6, 0.1.0, 2026/03/28, 08:15 PM, Claude Opus 4.5
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=local
+      - DEBUG=true
+      - PORT=8000
+      - LOG_LEVEL=debug
+      - OTEL_SERVICE_NAME=container-python-fastapi
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+      - BYPASS_AUTH=true
+      - JWT_SECRET=dev-secret-change-in-production
+      - CORS_ORIGINS=http://localhost:3000,http://localhost:5173
+    depends_on:
+      - otel-collector
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8000/health/live').raise_for_status()"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.102.0
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml:ro
+    ports:
+      - "4317:4317"   # OTLP gRPC
+      - "4318:4318"   # OTLP HTTP
+      - "8888:8888"   # Prometheus metrics
+      - "8889:8889"   # Prometheus exporter
+    networks:
+      - app-network
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.57
+    ports:
+      - "16686:16686" # Jaeger UI
+      - "14250:14250" # gRPC
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    networks:
+      - app-network
+
+  prometheus:
+    image: prom/prometheus:v2.52.0
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.enable-lifecycle'
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
