@@ -1,0 +1,991 @@
+{
+ "Resources": {
+  "SourceTable70380C26": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "pk",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "sk",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "gsi1pk",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "gsi1sk",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "GlobalSecondaryIndexes": [
+     {
+      "IndexName": "gsi1",
+      "KeySchema": [
+       {
+        "AttributeName": "gsi1pk",
+        "KeyType": "HASH"
+       },
+       {
+        "AttributeName": "gsi1sk",
+        "KeyType": "RANGE"
+       }
+      ],
+      "Projection": {
+       "ProjectionType": "ALL"
+      }
+     }
+    ],
+    "KeySchema": [
+     {
+      "AttributeName": "pk",
+      "KeyType": "HASH"
+     },
+     {
+      "AttributeName": "sk",
+      "KeyType": "RANGE"
+     }
+    ],
+    "PointInTimeRecoverySpecification": {
+     "PointInTimeRecoveryEnabled": true
+    },
+    "StreamSpecification": {
+     "StreamViewType": "NEW_AND_OLD_IMAGES"
+    },
+    "TableName": "ddb-sfn-source-table",
+    "TimeToLiveSpecification": {
+     "AttributeName": "ttl",
+     "Enabled": true
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/SourceTable/Resource"
+   }
+  },
+  "ErrorTopicA0904A23": {
+   "Type": "AWS::SNS::Topic",
+   "Properties": {
+    "DisplayName": "DynamoDB Stream Processing Errors",
+    "TopicName": "ddb-sfn-processing-errors"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/ErrorTopic/Resource"
+   }
+  },
+  "StateMachineLogGroup15B91BCB": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": "/aws/states/ddb-sfn-event-processor",
+    "RetentionInDays": 14
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/StateMachineLogGroup/Resource"
+   }
+  },
+  "PipeLogGroup607F807C": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": "/aws/pipes/ddb-sfn-ddb-to-sfn-pipe",
+    "RetentionInDays": 14
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/PipeLogGroup/Resource"
+   }
+  },
+  "InsertHandlerServiceRoleA6652B68": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/InsertHandler/ServiceRole/Resource"
+   }
+  },
+  "InsertHandlerServiceRoleDefaultPolicy1BA7B623": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "xray:PutTelemetryRecords",
+        "xray:PutTraceSegments"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "SourceTable70380C26",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "SourceTable70380C26",
+             "Arn"
+            ]
+           },
+           "/index/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "InsertHandlerServiceRoleDefaultPolicy1BA7B623",
+    "Roles": [
+     {
+      "Ref": "InsertHandlerServiceRoleA6652B68"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/InsertHandler/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "InsertHandlerED650EA2": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-901434253625-us-east-1",
+     "S3Key": "3428e1fded44f6ad37eab6bed016b8df82673608ab1e437b865687a6322cb6c6.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "SourceTable70380C26"
+      },
+      "NODE_OPTIONS": "--enable-source-maps"
+     }
+    },
+    "FunctionName": "ddb-sfn-insert-handler",
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "InsertHandlerServiceRoleA6652B68",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs20.x",
+    "Timeout": 30,
+    "TracingConfig": {
+     "Mode": "Active"
+    }
+   },
+   "DependsOn": [
+    "InsertHandlerServiceRoleDefaultPolicy1BA7B623",
+    "InsertHandlerServiceRoleA6652B68"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/InsertHandler/Resource",
+    "aws:asset:path": "asset.3428e1fded44f6ad37eab6bed016b8df82673608ab1e437b865687a6322cb6c6",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "ModifyHandlerServiceRole38B23C14": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/ModifyHandler/ServiceRole/Resource"
+   }
+  },
+  "ModifyHandlerServiceRoleDefaultPolicyF777866B": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "xray:PutTelemetryRecords",
+        "xray:PutTraceSegments"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "SourceTable70380C26",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "SourceTable70380C26",
+             "Arn"
+            ]
+           },
+           "/index/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ModifyHandlerServiceRoleDefaultPolicyF777866B",
+    "Roles": [
+     {
+      "Ref": "ModifyHandlerServiceRole38B23C14"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/ModifyHandler/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "ModifyHandler8504D511": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-901434253625-us-east-1",
+     "S3Key": "b4c9b0e29a899d37e2e7ec428bdb9c4e5c680320ae1bf5e75956408c9003b036.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "SourceTable70380C26"
+      },
+      "NODE_OPTIONS": "--enable-source-maps"
+     }
+    },
+    "FunctionName": "ddb-sfn-modify-handler",
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "ModifyHandlerServiceRole38B23C14",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs20.x",
+    "Timeout": 30,
+    "TracingConfig": {
+     "Mode": "Active"
+    }
+   },
+   "DependsOn": [
+    "ModifyHandlerServiceRoleDefaultPolicyF777866B",
+    "ModifyHandlerServiceRole38B23C14"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/ModifyHandler/Resource",
+    "aws:asset:path": "asset.b4c9b0e29a899d37e2e7ec428bdb9c4e5c680320ae1bf5e75956408c9003b036",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "RemoveHandlerServiceRole04F1F347": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/RemoveHandler/ServiceRole/Resource"
+   }
+  },
+  "RemoveHandlerServiceRoleDefaultPolicyC8264A43": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "xray:PutTelemetryRecords",
+        "xray:PutTraceSegments"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "SourceTable70380C26",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "SourceTable70380C26",
+             "Arn"
+            ]
+           },
+           "/index/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "RemoveHandlerServiceRoleDefaultPolicyC8264A43",
+    "Roles": [
+     {
+      "Ref": "RemoveHandlerServiceRole04F1F347"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/RemoveHandler/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "RemoveHandler590DBC4D": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-901434253625-us-east-1",
+     "S3Key": "618c5ebe0cd5b166334d4fce2fdf777fe39e765c37a62acddf2482fa40e1be6e.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "SourceTable70380C26"
+      },
+      "NODE_OPTIONS": "--enable-source-maps"
+     }
+    },
+    "FunctionName": "ddb-sfn-remove-handler",
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "RemoveHandlerServiceRole04F1F347",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs20.x",
+    "Timeout": 30,
+    "TracingConfig": {
+     "Mode": "Active"
+    }
+   },
+   "DependsOn": [
+    "RemoveHandlerServiceRoleDefaultPolicyC8264A43",
+    "RemoveHandlerServiceRole04F1F347"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/RemoveHandler/Resource",
+    "aws:asset:path": "asset.618c5ebe0cd5b166334d4fce2fdf777fe39e765c37a62acddf2482fa40e1be6e",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "EventProcessorStateMachineRole88E7E98E": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "states.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/EventProcessorStateMachine/Role/Resource"
+   }
+  },
+  "EventProcessorStateMachineRoleDefaultPolicy96D51E71": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:CreateLogDelivery",
+        "logs:DeleteLogDelivery",
+        "logs:DescribeLogGroups",
+        "logs:DescribeResourcePolicies",
+        "logs:GetLogDelivery",
+        "logs:ListLogDeliveries",
+        "logs:PutResourcePolicy",
+        "logs:UpdateLogDelivery",
+        "logs:putLogEvents",
+        "xray:GetSamplingRules",
+        "xray:GetSamplingTargets",
+        "xray:PutTelemetryRecords",
+        "xray:PutTraceSegments"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "InsertHandlerED650EA2",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::GetAtt": [
+          "ModifyHandler8504D511",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::GetAtt": [
+          "RemoveHandler590DBC4D",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "InsertHandlerED650EA2",
+             "Arn"
+            ]
+           },
+           ":*"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ModifyHandler8504D511",
+             "Arn"
+            ]
+           },
+           ":*"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "RemoveHandler590DBC4D",
+             "Arn"
+            ]
+           },
+           ":*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "sns:Publish",
+       "Effect": "Allow",
+       "Resource": {
+        "Ref": "ErrorTopicA0904A23"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "EventProcessorStateMachineRoleDefaultPolicy96D51E71",
+    "Roles": [
+     {
+      "Ref": "EventProcessorStateMachineRole88E7E98E"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/EventProcessorStateMachine/Role/DefaultPolicy/Resource"
+   }
+  },
+  "EventProcessorStateMachine6DE3B934": {
+   "Type": "AWS::StepFunctions::StateMachine",
+   "Properties": {
+    "DefinitionString": {
+     "Fn::Join": [
+      "",
+      [
+       "{\"StartAt\":\"RouteByEventType\",\"States\":{\"RouteByEventType\":{\"Type\":\"Choice\",\"Choices\":[{\"Variable\":\"$.eventType\",\"StringEquals\":\"INSERT\",\"Next\":\"ProcessInsert\"},{\"Variable\":\"$.eventType\",\"StringEquals\":\"MODIFY\",\"Next\":\"ProcessModify\"},{\"Variable\":\"$.eventType\",\"StringEquals\":\"REMOVE\",\"Next\":\"ProcessRemove\"}],\"Default\":\"LogUnknownEvent\"},\"LogUnknownEvent\":{\"Next\":\"Success\",\"Type\":\"Task\",\"Resource\":\"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":states:::aws-sdk:cloudwatchlogs:putLogEvents\",\"Parameters\":{\"LogGroupName\":\"/aws/states/ddb-sfn-unknown-events\",\"LogStreamName.$\":\"States.Format('unknown-events-{}', $$.Execution.StartTime)\",\"LogEvents\":[{\"Timestamp.$\":\"$$.State.EnteredTime\",\"Message.$\":\"States.Format('{}', $)\"}]}},\"Success\":{\"Type\":\"Succeed\"},\"ProcessInsert\":{\"Next\":\"Success\",\"Retry\":[{\"ErrorEquals\":[\"Lambda.ClientExecutionTimeoutException\",\"Lambda.ServiceException\",\"Lambda.AWSLambdaException\",\"Lambda.SdkClientException\"],\"IntervalSeconds\":2,\"MaxAttempts\":6,\"BackoffRate\":2},{\"ErrorEquals\":[\"Lambda.ServiceException\",\"Lambda.TooManyRequestsException\"],\"IntervalSeconds\":2,\"MaxAttempts\":3,\"BackoffRate\":2}],\"Catch\":[{\"ErrorEquals\":[\"States.ALL\"],\"ResultPath\":\"$.error\",\"Next\":\"HandleError\"}],\"Type\":\"Task\",\"ResultPath\":\"$.insertResult\",\"Resource\":\"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":states:::lambda:invoke\",\"Parameters\":{\"FunctionName\":\"",
+       {
+        "Fn::GetAtt": [
+         "InsertHandlerED650EA2",
+         "Arn"
+        ]
+       },
+       "\",\"Payload.$\":\"$\"}},\"HandleError\":{\"Next\":\"Fail\",\"Type\":\"Task\",\"Resource\":\"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":states:::sns:publish\",\"Parameters\":{\"TopicArn\":\"",
+       {
+        "Ref": "ErrorTopicA0904A23"
+       },
+       "\",\"Message.$\":\"States.JsonToString($.error)\",\"Subject\":\"DynamoDB Stream Processing Error\"}},\"ProcessModify\":{\"Next\":\"Success\",\"Retry\":[{\"ErrorEquals\":[\"Lambda.ClientExecutionTimeoutException\",\"Lambda.ServiceException\",\"Lambda.AWSLambdaException\",\"Lambda.SdkClientException\"],\"IntervalSeconds\":2,\"MaxAttempts\":6,\"BackoffRate\":2},{\"ErrorEquals\":[\"Lambda.ServiceException\",\"Lambda.TooManyRequestsException\"],\"IntervalSeconds\":2,\"MaxAttempts\":3,\"BackoffRate\":2}],\"Catch\":[{\"ErrorEquals\":[\"States.ALL\"],\"ResultPath\":\"$.error\",\"Next\":\"HandleError\"}],\"Type\":\"Task\",\"ResultPath\":\"$.modifyResult\",\"Resource\":\"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":states:::lambda:invoke\",\"Parameters\":{\"FunctionName\":\"",
+       {
+        "Fn::GetAtt": [
+         "ModifyHandler8504D511",
+         "Arn"
+        ]
+       },
+       "\",\"Payload.$\":\"$\"}},\"ProcessRemove\":{\"Next\":\"Success\",\"Retry\":[{\"ErrorEquals\":[\"Lambda.ClientExecutionTimeoutException\",\"Lambda.ServiceException\",\"Lambda.AWSLambdaException\",\"Lambda.SdkClientException\"],\"IntervalSeconds\":2,\"MaxAttempts\":6,\"BackoffRate\":2},{\"ErrorEquals\":[\"Lambda.ServiceException\",\"Lambda.TooManyRequestsException\"],\"IntervalSeconds\":2,\"MaxAttempts\":3,\"BackoffRate\":2}],\"Catch\":[{\"ErrorEquals\":[\"States.ALL\"],\"ResultPath\":\"$.error\",\"Next\":\"HandleError\"}],\"Type\":\"Task\",\"ResultPath\":\"$.removeResult\",\"Resource\":\"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":states:::lambda:invoke\",\"Parameters\":{\"FunctionName\":\"",
+       {
+        "Fn::GetAtt": [
+         "RemoveHandler590DBC4D",
+         "Arn"
+        ]
+       },
+       "\",\"Payload.$\":\"$\"}},\"Fail\":{\"Type\":\"Fail\",\"Error\":\"ProcessingError\",\"Cause\":\"Event processing failed\"}}}"
+      ]
+     ]
+    },
+    "LoggingConfiguration": {
+     "Destinations": [
+      {
+       "CloudWatchLogsLogGroup": {
+        "LogGroupArn": {
+         "Fn::GetAtt": [
+          "StateMachineLogGroup15B91BCB",
+          "Arn"
+         ]
+        }
+       }
+      }
+     ],
+     "IncludeExecutionData": true,
+     "Level": "ALL"
+    },
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "EventProcessorStateMachineRole88E7E98E",
+      "Arn"
+     ]
+    },
+    "StateMachineName": "ddb-sfn-event-processor",
+    "StateMachineType": "EXPRESS",
+    "TracingConfiguration": {
+     "Enabled": true
+    }
+   },
+   "DependsOn": [
+    "EventProcessorStateMachineRoleDefaultPolicy96D51E71",
+    "EventProcessorStateMachineRole88E7E98E"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/EventProcessorStateMachine/Resource"
+   }
+  },
+  "PipeRole4D7B8476": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "pipes.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "RoleName": "ddb-sfn-pipe-role"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/PipeRole/Resource"
+   }
+  },
+  "PipeRoleDefaultPolicy84F54597": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:DescribeStream",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:ListStreams"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "SourceTable70380C26",
+         "StreamArn"
+        ]
+       }
+      },
+      {
+       "Action": "states:StartExecution",
+       "Effect": "Allow",
+       "Resource": {
+        "Ref": "EventProcessorStateMachine6DE3B934"
+       }
+      },
+      {
+       "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "PipeLogGroup607F807C",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "PipeRoleDefaultPolicy84F54597",
+    "Roles": [
+     {
+      "Ref": "PipeRole4D7B8476"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/PipeRole/DefaultPolicy/Resource"
+   }
+  },
+  "DdbToSfnPipe": {
+   "Type": "AWS::Pipes::Pipe",
+   "Properties": {
+    "LogConfiguration": {
+     "CloudwatchLogsLogDestination": {
+      "LogGroupArn": {
+       "Fn::GetAtt": [
+        "PipeLogGroup607F807C",
+        "Arn"
+       ]
+      }
+     },
+     "Level": "ERROR"
+    },
+    "Name": "ddb-sfn-ddb-to-sfn-pipe",
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "PipeRole4D7B8476",
+      "Arn"
+     ]
+    },
+    "Source": {
+     "Fn::GetAtt": [
+      "SourceTable70380C26",
+      "StreamArn"
+     ]
+    },
+    "SourceParameters": {
+     "DynamoDBStreamParameters": {
+      "BatchSize": 10,
+      "MaximumBatchingWindowInSeconds": 1,
+      "MaximumRetryAttempts": 3,
+      "OnPartialBatchItemFailure": "AUTOMATIC_BISECT",
+      "ParallelizationFactor": 1,
+      "StartingPosition": "LATEST"
+     },
+     "FilterCriteria": {
+      "Filters": [
+       {
+        "Pattern": "{\"eventName\":[\"INSERT\",\"MODIFY\"]}"
+       }
+      ]
+     }
+    },
+    "Tags": {
+     "ManagedBy": "app-factory",
+     "Pattern": "dynamodb-stream-to-stepfunctions"
+    },
+    "Target": {
+     "Ref": "EventProcessorStateMachine6DE3B934"
+    },
+    "TargetParameters": {
+     "InputTemplate": "{\"eventId\":\"<$.eventID>\",\"eventType\":\"<$.eventName>\",\"tableName\":\"<$.eventSourceARN>\",\"keys\":\"<$.dynamodb.Keys>\",\"newImage\":\"<$.dynamodb.NewImage>\",\"oldImage\":\"<$.dynamodb.OldImage>\",\"timestamp\":\"<$.dynamodb.ApproximateCreationDateTime>\",\"metadata\":{\"sequenceNumber\":\"<$.dynamodb.SequenceNumber>\",\"sizeBytes\":\"<$.dynamodb.SizeBytes>\",\"region\":\"<$.awsRegion>\"}}",
+     "StepFunctionStateMachineParameters": {
+      "InvocationType": "FIRE_AND_FORGET"
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/DdbToSfnPipe"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/01Qy27CQAz8lt6Ni4B+AESiqtQHItwjZ2OCyWY3indBKMq/VxtoxWlm/Bx7gYvVG85f6KozUzUzKyUOeSDTAF21GKqbo9ZXJQ4HKi1DdnQTGUGd4nDwnZgpmMgI1teKw6ev33sfu5T44yNYasuKCucrPit+T7CNzgTxDoRaHPb+vmHCnbdibkne2Qi6LEiVg+I6AegSN9E0HDak/BiP2dH9D9XA3fEhtAikTTI31X24i28Ycqe7WFrRE2Rk7fqqOfcXMem+52Yc8mgMcwVbEgvZyYthyAMF/iJzEjf5ftYjdNKxJj876XiEPauPvWGYzOeBanF16vqJoYthhPQYPOvrZbHCJc5fzioy66ML0jLu7/gL5MOa468BAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "ddb-sfn-stack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "TableName": {
+   "Description": "DynamoDB source table name",
+   "Value": {
+    "Ref": "SourceTable70380C26"
+   },
+   "Export": {
+    "Name": "ddb-sfn-table-name"
+   }
+  },
+  "TableArn": {
+   "Description": "DynamoDB source table ARN",
+   "Value": {
+    "Fn::GetAtt": [
+     "SourceTable70380C26",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "ddb-sfn-table-arn"
+   }
+  },
+  "TableStreamArn": {
+   "Description": "DynamoDB stream ARN",
+   "Value": {
+    "Fn::GetAtt": [
+     "SourceTable70380C26",
+     "StreamArn"
+    ]
+   },
+   "Export": {
+    "Name": "ddb-sfn-stream-arn"
+   }
+  },
+  "StateMachineArn": {
+   "Description": "Step Functions state machine ARN",
+   "Value": {
+    "Ref": "EventProcessorStateMachine6DE3B934"
+   },
+   "Export": {
+    "Name": "ddb-sfn-sfn-arn"
+   }
+  },
+  "PipeName": {
+   "Description": "EventBridge Pipe name",
+   "Value": "ddb-sfn-ddb-to-sfn-pipe",
+   "Export": {
+    "Name": "ddb-sfn-pipe-name"
+   }
+  },
+  "ErrorTopicArn": {
+   "Description": "SNS topic for error notifications",
+   "Value": {
+    "Ref": "ErrorTopicA0904A23"
+   },
+   "Export": {
+    "Name": "ddb-sfn-error-topic-arn"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

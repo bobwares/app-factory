@@ -1,0 +1,109 @@
+{
+  "turnId": 14,
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-14/execution_trace.json",
+    "skillsExecuted": [
+      "branch-guard",
+      "session-start",
+      "turn-end",
+      "turn-init"
+    ],
+    "agentsExecuted": [
+      "codex"
+    ]
+  },
+  "tasks": [
+    {
+      "taskId": "T14-1",
+      "agent": "doc-generator",
+      "inputs": [
+        "https://serverlessland.com/",
+        "https://serverlessland.com/patterns/",
+        "https://serverlessland.com/_nuxt/Bzba4M6L.js"
+      ],
+      "outputs": [
+        {
+          "path": "docs/aws-patterns.md",
+          "sha256": "c79486bb11e347240d22d1cf9a0fc7e52b8af6e2b22691979a666327871e8661"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-14/turn_context.md",
+          "sha256": "4a726c1aec75601c2e3ed47b0e4d20ec538d0bf022375374dbf9cf27dd12583e"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-14/execution_trace.json",
+          "sha256": "ed796825a24942b63231b0ddfb60ce3d9c207bce7a426cc30eba541eb2cec10d"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-14/pull_request.md",
+          "sha256": "4de01abac56675bfa611d7ada55b345510208135efd6f6bba83573e952e5d8c3"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-14/adr.md",
+          "sha256": "371a04b0cd884ff5cb6e9ac5495d9f104d81e4b55bab7dda81a8b9ec6bcb923e"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns_index.csv",
+          "sha256": "5bf1bf8ba11196e8bfd838445326ecb3184c985dff9c3c0bb1dd316b6a80f22e"
+        }
+      ],
+      "validations": [
+        {
+          "rule": "tests-pass",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "lint-clean",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "build-succeeds",
+          "status": "skipped",
+          "detailsPath": ""
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "promptHash": "aa928875388f1a1800bfccd65a91b05902cc42896e5a61bcc140acbbd26d054c",
+    "tools": [
+      "Bash",
+      "Edit",
+      "Grep",
+      "Read",
+      "WebFetch"
+    ],
+    "startedAt": "2026-03-29T03:32:54Z",
+    "finishedAt": "2026-03-29T03:48:20Z",
+    "activePatternName": "",
+    "activePatternPath": ""
+  },
+  "outputs": [
+    {
+      "path": "docs/aws-patterns.md",
+      "sha256": "c79486bb11e347240d22d1cf9a0fc7e52b8af6e2b22691979a666327871e8661"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-14/turn_context.md",
+      "sha256": "4a726c1aec75601c2e3ed47b0e4d20ec538d0bf022375374dbf9cf27dd12583e"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-14/execution_trace.json",
+      "sha256": "ed796825a24942b63231b0ddfb60ce3d9c207bce7a426cc30eba541eb2cec10d"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-14/pull_request.md",
+      "sha256": "4de01abac56675bfa611d7ada55b345510208135efd6f6bba83573e952e5d8c3"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-14/adr.md",
+      "sha256": "371a04b0cd884ff5cb6e9ac5495d9f104d81e4b55bab7dda81a8b9ec6bcb923e"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns_index.csv",
+      "sha256": "5bf1bf8ba11196e8bfd838445326ecb3184c985dff9c3c0bb1dd316b6a80f22e"
+    }
+  ]
+}

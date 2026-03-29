@@ -78,11 +78,12 @@ Format output as a categorized table:
 | nextjs-hybrid-container-node | nextjs | turbopack | container |
 | react-spa-container-nginx | react | vite | container |
 
-## Persistence (2 profiles)
+## Persistence (3 profiles)
 
 | ID | Engine | Model |
 |----|--------|-------|
 | dynamodb-single-table | dynamodb | single-table |
+| kafka-event-stream | kafka | event-stream |
 | postgresql-service | postgresql | relational |
 
 ## IaC (8 profiles)
@@ -99,16 +100,17 @@ Format output as a categorized table:
 | terraform-aws-serverless | terraform | aws |
 | terraform-kubernetes | terraform | kubernetes |
 
-## Stacks (10 profiles)
+## Stacks (11 profiles)
 
 | ID | Backend | UI |
 |----|---------|-----|
 | container-java-springboot__angular-spa-container-nginx | container-java-springboot | angular-spa-container-nginx |
 | container-java-springboot__react-spa-container-nginx | container-java-springboot | react-spa-container-nginx |
+| container-typescript-nestjs__nextjs-hybrid-container-node__turbo-monorepo | container-typescript-nestjs | nextjs-hybrid-container-node |
 ...
 
 ═══════════════════════════════════════════════════════════════════════
-  Total: 28 profiles across 5 categories
+  Total: 30 profiles across 5 categories
 ═══════════════════════════════════════════════════════════════════════
 ```
 

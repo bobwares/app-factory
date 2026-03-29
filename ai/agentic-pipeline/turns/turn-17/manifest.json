@@ -1,0 +1,111 @@
+{
+  "turnId": 17,
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-17/execution_trace.json",
+    "skillsExecuted": [
+      "branch-guard",
+      "list-tech-stacks",
+      "session-start",
+      "turn-end",
+      "turn-init"
+    ],
+    "agentsExecuted": [
+      "codex"
+    ]
+  },
+  "tasks": [
+    {
+      "taskId": "T17-1",
+      "agent": "doc-generator",
+      "inputs": [
+        "User prompt requesting an enterprise observability tools document",
+        "Prometheus",
+        "Splunk",
+        "Grafana",
+        "Jaeger",
+        "CloudWatch"
+      ],
+      "outputs": [
+        {
+          "path": "docs/observability-tools.md",
+          "sha256": "4beb05978bbd5649bd897c1853ae4875dd893c7538b7e8475a95ad4278f8e32b"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-17/turn_context.md",
+          "sha256": "8649177f5e083a529f74c9fbf1d6668d4164c72d65d4a6c23f95102b454f9e07"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-17/execution_trace.json",
+          "sha256": "dfbe19ec8e61a9941d8125f7d138dc0d0fe9afd9f5ab879d8c9aeef5eed38a24"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-17/pull_request.md",
+          "sha256": "5afeb0e1f0a16dd464e11d8a20eff98c6f5cbe1e6fd7d20dc3ccfa6e55171a6a"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-17/adr.md",
+          "sha256": "7ef20a6d2b52f281b3e0022dc6ee66ff9360ca5f9b21bc4c09e03b130a929f9c"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns_index.csv",
+          "sha256": "9c3d4f4559b3f4b0b2f856fef873266487ddd829b884b84ace3b602611da8fab"
+        }
+      ],
+      "validations": [
+        {
+          "rule": "tests-pass",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "lint-clean",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "build-succeeds",
+          "status": "skipped",
+          "detailsPath": ""
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "promptHash": "d93cfd8c4fde972e353f042c69d146d433350b455e3eb9234c898e8f9f9e3c00",
+    "tools": [
+      "Bash",
+      "Edit",
+      "Read"
+    ],
+    "startedAt": "2026-03-29T08:33:50Z",
+    "finishedAt": "2026-03-29T08:35:18Z",
+    "activePatternName": "",
+    "activePatternPath": ""
+  },
+  "outputs": [
+    {
+      "path": "docs/observability-tools.md",
+      "sha256": "4beb05978bbd5649bd897c1853ae4875dd893c7538b7e8475a95ad4278f8e32b"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-17/turn_context.md",
+      "sha256": "8649177f5e083a529f74c9fbf1d6668d4164c72d65d4a6c23f95102b454f9e07"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-17/execution_trace.json",
+      "sha256": "dfbe19ec8e61a9941d8125f7d138dc0d0fe9afd9f5ab879d8c9aeef5eed38a24"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-17/pull_request.md",
+      "sha256": "5afeb0e1f0a16dd464e11d8a20eff98c6f5cbe1e6fd7d20dc3ccfa6e55171a6a"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-17/adr.md",
+      "sha256": "7ef20a6d2b52f281b3e0022dc6ee66ff9360ca5f9b21bc4c09e03b130a929f9c"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns_index.csv",
+      "sha256": "9c3d4f4559b3f4b0b2f856fef873266487ddd829b884b84ace3b602611da8fab"
+    }
+  ]
+}

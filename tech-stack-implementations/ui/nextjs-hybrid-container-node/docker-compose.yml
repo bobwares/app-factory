@@ -1,0 +1,46 @@
+# App: app-factory
+# File: docker-compose.yml
+# Version: 1.0.0
+# Turns: 13
+# Author: AI Coding Agent (Claude Opus 4.5)
+# Date: 2026-03-29T00:26:14Z
+# Description: Docker Compose for local development
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BUILD_ID: local-dev
+    container_name: nextjs-hybrid-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_APP_URL=http://localhost:3000
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  # Development mode with hot reload
+  dev:
+    image: node:22-alpine
+    container_name: nextjs-hybrid-dev
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_APP_URL=http://localhost:3000
+    command: sh -c "npm install && npm run dev"
+    profiles:
+      - dev

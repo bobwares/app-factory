@@ -1,0 +1,49 @@
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: container-typescript-nestjs__nextjs-hybrid-container-node__turbo-monorepo
+  category: stack
+  topology: container
+  description: typescript-monorepo-with-containerized-nestjs-api-and-hybrid-nextjs-ui
+  composition:
+    backendProfileRef: backend/container-typescript-nestjs
+    uiProfileRef: ui/nextjs-hybrid-container-node
+    persistenceProfileRef: persistence/postgresql-service
+    iacProfileRefs:
+      - iac/terraform-aws-ecs-fargate
+      - iac/docker-compose-local-dev
+  workspace:
+    layout: monorepo
+    tool: turborepo
+    packageManager: pnpm
+    rootFiles:
+      - package.json
+      - pnpm-workspace.yaml
+      - turbo.json
+    applications:
+      - name: api
+        path: apps/api
+        profileRef: backend/container-typescript-nestjs
+      - name: web
+        path: apps/web
+        profileRef: ui/nextjs-hybrid-container-node
+    sharedPackages:
+      - packages/config
+      - packages/types
+      - packages/ui
+    taskPipelines:
+      - dev
+      - build
+      - lint
+      - test
+  deployment:
+    cloudProvider: aws
+    environmentStrategy:
+      - local
+      - dev
+      - test
+      - prod
+  defaults:
+    apiStyle: rest
+    authMode: jwt
+    localOrchestration: turbo

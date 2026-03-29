@@ -7,7 +7,7 @@ This package defines a **composable target-tech-stack-profile model** for an AI-
 The intent is to keep the DSL modular:
 
 - **backend profiles** define runtime, language, framework, compute platform, and service conventions
-- **ui profiles** define SPA framework and delivery/runtime conventions
+- **ui profiles** define frontend framework and delivery/runtime conventions
 - **persistence profiles** define primary data-store style and operational defaults
 - **iac profiles** define infrastructure-as-code technology and deployment topology
 - **stack profiles** compose the above into resolved application targets
@@ -32,8 +32,10 @@ The UI target space requested is:
 
 - **React**
 - **Angular**
+- **Next.js**
 
-Current default deployment assumption for the UI is **containerized SPA delivery** using **Nginx**.
+Current default deployment assumption for the React and Angular UI profiles is **containerized SPA delivery** using **Nginx**.
+Next.js is modeled separately as a hybrid Node.js container profile.
 If you later decide to support static hosting, that should be added as a separate UI delivery profile rather than changing these profiles in place.
 
 ### Persistence Defaults
@@ -44,6 +46,7 @@ These profiles include sensible default persistence references:
 - **Container backend stacks** default to **PostgreSQL**
 
 That is a default, not a hard rule. The stack profile composition model allows you to swap persistence later.
+Event-sourced or streaming-first applications can instead use `persistence/kafka-event-stream` when Kafka is the primary system of record.
 
 ### IaC Coverage
 
@@ -94,10 +97,10 @@ Defines:
 
 Defines:
 
-- database model
+- database or event-log model
 - engine
-- schema strategy
-- migration approach
+- schema/topic strategy
+- migration/evolution approach
 - local-dev assumptions
 
 ### IaC profile
@@ -114,6 +117,8 @@ Defines:
 
 Composes a full solution from references to the other profiles.
 
+Stack profiles may also include optional workspace metadata when repository layout is part of the target. That allows monorepo-oriented stacks to describe tools such as Turborepo, root workspace files, app paths, and shared package locations.
+
 ## Naming Convention
 
 Use this naming convention for new profiles:
@@ -122,7 +127,7 @@ Use this naming convention for new profiles:
 - ui: `<framework>-<delivery-shape>`
 - persistence: `<engine>-<pattern>`
 - iac: `<tool>-<platform>`
-- stack: `<backend>__<ui>`
+- stack: `<backend>__<ui>[__<workspace-shape>]`
 
 ## Recommended Defaults
 
@@ -145,6 +150,16 @@ Use this naming convention for new profiles:
   - `terraform-aws-ecs-fargate`
   - `docker-compose-local-dev`
 
+### Recommended monorepo path
+
+- backend: `container-typescript-nestjs`
+- ui: `nextjs-hybrid-container-node`
+- persistence: `postgresql-service`
+- iac:
+  - `terraform-aws-ecs-fargate`
+  - `docker-compose-local-dev`
+- stack: `container-typescript-nestjs__nextjs-hybrid-container-node__turbo-monorepo`
+
 ## Notes on Composition
 
 ### Mixed topologies
@@ -155,6 +170,17 @@ That means a stack profile can reference **multiple IaC profiles**:
 - one for backend/serverless
 - one for UI/container delivery
 - optionally one for local development
+
+### Event-stream persistence
+
+The `persistence` category can also model an append-only event log when it is the system of record.
+For those cases, `persistence/kafka-event-stream` captures Kafka topic, contract, ordering, and replay defaults for event-driven services.
+If you later need both Kafka and a relational or document database in the same target, that should be modeled as an extended composition shape rather than overloading a single `persistenceProfileRef`.
+
+### Monorepo container stacks
+
+Some stacks may define a repository workspace in addition to backend and UI composition.
+For example, a Turborepo-based stack can keep the frontend in `apps/web`, the backend in `apps/api`, and shared libraries in `packages/*` while still reusing the existing backend, UI, persistence, and IaC profiles.
 
 ### Future expansion
 
@@ -197,5 +223,6 @@ This package includes all requested backend and UI combinations:
 
 - 2 serverless backend choices × 2 UI choices = 4 mixed-topology profiles
 - 3 container backend choices × 2 UI choices = 6 container-topology profiles
+- 1 monorepo container profile for NestJS + Next.js via Turborepo
 
-Total: **10 resolved stack profiles**
+Total: **11 resolved stack profiles**

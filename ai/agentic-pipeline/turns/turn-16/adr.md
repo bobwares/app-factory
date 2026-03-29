@@ -1,0 +1,1 @@
+No architectural decision made this turn — extended the existing stack profile model with optional `workspace` metadata instead of introducing a new top-level profile category, so Turbo monorepo support fits the current backend/UI/persistence/IaC composition approach.
