@@ -1,0 +1,33 @@
+{
+  "turnId": "13",
+  "version": "1.0.0",
+  "createdAt": "2026-03-29T03:27:28Z",
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-13/execution_trace.json",
+    "skillsExecuted": ["turn-init", "turn-end"],
+    "agentsExecuted": ["claude"]
+  },
+  "outputs": [
+    {
+      "path": "tech-stack-implementations/ui/nextjs-hybrid-container-node/src/app/layout.tsx",
+      "type": "source",
+      "sha256": "57b00b5a9299b48bad60b53e7617b65fc3bf201af86b9e43e592575bee39504d"
+    },
+    {
+      "path": "tech-stack-implementations/ui/nextjs-hybrid-container-node/src/app/page.tsx",
+      "type": "source",
+      "sha256": "fbdc5c680727aab814858d79180be52e08570e1b53f80c00166d27079edefa3e"
+    },
+    {
+      "path": "tech-stack-implementations/ui/nextjs-hybrid-container-node/Dockerfile",
+      "type": "config",
+      "sha256": "3bfe67b03ee470e876a9f7d55a9e0c63c9fc947adbe87945044288dd9c12ceaa"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "tech-stack-profiles/ui/nextjs-hybrid-container-node.yaml",
+      "type": "tech-stack-profile"
+    }
+  ]
+}
