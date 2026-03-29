@@ -1,0 +1,1 @@
+No architectural decision made this turn — documented the closest current official pattern/example resources for Spring Boot, NestJS, and Next.js because none of the three ecosystems expose a single Serverless Land-style pattern catalog with equivalent scope.

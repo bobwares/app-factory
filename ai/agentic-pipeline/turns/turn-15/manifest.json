@@ -1,0 +1,128 @@
+{
+  "turnId": 15,
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-15/execution_trace.json",
+    "skillsExecuted": [
+      "branch-guard",
+      "session-start",
+      "turn-end",
+      "turn-init"
+    ],
+    "agentsExecuted": [
+      "codex"
+    ]
+  },
+  "tasks": [
+    {
+      "taskId": "T15-1",
+      "agent": "doc-generator",
+      "inputs": [
+        "https://spring.io/guides/",
+        "https://docs.nestjs.com/recipes",
+        "https://docs.nestjs.com/techniques",
+        "https://github.com/nestjs/nest/tree/master/sample",
+        "https://vercel.com/templates/next.js",
+        "https://nextjs.org/docs/app/guides",
+        "https://github.com/vercel/next.js/tree/canary/examples"
+      ],
+      "outputs": [
+        {
+          "path": "docs/spring-boot-patterns.md",
+          "sha256": "fe50772d50ff896643ce0ab2aa19e8061051c5272f6952948f8526d899740e23"
+        },
+        {
+          "path": "docs/nestjs-patterns.md",
+          "sha256": "b7156e4921b13bc894ee93f5a6d6ed7d1be840c4bc146b1caa62f1cab6b22b4b"
+        },
+        {
+          "path": "docs/nextjs-patterns.md",
+          "sha256": "2159684677fb5dce504e6938930f93bbe279b4472fc866823aaa48b6324e4a72"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-15/turn_context.md",
+          "sha256": "864feb8ec59972fc22bf39baa32bcb8b4c86f9cb5ddc4d28b5c15b5eb974c702"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-15/execution_trace.json",
+          "sha256": "824da1cc2da8559de70101a366de554361a7118f64007ff45ac98f575b574aa7"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-15/pull_request.md",
+          "sha256": "83e550b8c1e1480554c8393e466277a58c5e22303f1687e98e04ed5abe466590"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-15/adr.md",
+          "sha256": "bf0621b7db78001cc0c05b169b5788b0ec7e5315aff782771638056e60e46135"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns_index.csv",
+          "sha256": "72067aac6fe0a05efc08cf0de0a9cbda6dc5da483b5b004df58c44e01889c38f"
+        }
+      ],
+      "validations": [
+        {
+          "rule": "tests-pass",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "lint-clean",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "build-succeeds",
+          "status": "skipped",
+          "detailsPath": ""
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "promptHash": "a77ae03f76649a99e03636ca0d95fe82f17911c394f6e9e96f5d3ab756d586be",
+    "tools": [
+      "Bash",
+      "Edit",
+      "Read",
+      "WebFetch"
+    ],
+    "startedAt": "2026-03-29T08:04:54Z",
+    "finishedAt": "2026-03-29T08:11:30Z",
+    "activePatternName": "",
+    "activePatternPath": ""
+  },
+  "outputs": [
+    {
+      "path": "docs/spring-boot-patterns.md",
+      "sha256": "fe50772d50ff896643ce0ab2aa19e8061051c5272f6952948f8526d899740e23"
+    },
+    {
+      "path": "docs/nestjs-patterns.md",
+      "sha256": "b7156e4921b13bc894ee93f5a6d6ed7d1be840c4bc146b1caa62f1cab6b22b4b"
+    },
+    {
+      "path": "docs/nextjs-patterns.md",
+      "sha256": "2159684677fb5dce504e6938930f93bbe279b4472fc866823aaa48b6324e4a72"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-15/turn_context.md",
+      "sha256": "864feb8ec59972fc22bf39baa32bcb8b4c86f9cb5ddc4d28b5c15b5eb974c702"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-15/execution_trace.json",
+      "sha256": "824da1cc2da8559de70101a366de554361a7118f64007ff45ac98f575b574aa7"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-15/pull_request.md",
+      "sha256": "83e550b8c1e1480554c8393e466277a58c5e22303f1687e98e04ed5abe466590"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-15/adr.md",
+      "sha256": "bf0621b7db78001cc0c05b169b5788b0ec7e5315aff782771638056e60e46135"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns_index.csv",
+      "sha256": "72067aac6fe0a05efc08cf0de0a9cbda6dc5da483b5b004df58c44e01889c38f"
+    }
+  ]
+}
