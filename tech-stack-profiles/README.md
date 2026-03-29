@@ -46,6 +46,7 @@ These profiles include sensible default persistence references:
 - **Container backend stacks** default to **PostgreSQL**
 
 That is a default, not a hard rule. The stack profile composition model allows you to swap persistence later.
+Event-sourced or streaming-first applications can instead use `persistence/kafka-event-stream` when Kafka is the primary system of record.
 
 ### IaC Coverage
 
@@ -96,10 +97,10 @@ Defines:
 
 Defines:
 
-- database model
+- database or event-log model
 - engine
-- schema strategy
-- migration approach
+- schema/topic strategy
+- migration/evolution approach
 - local-dev assumptions
 
 ### IaC profile
@@ -169,6 +170,12 @@ That means a stack profile can reference **multiple IaC profiles**:
 - one for backend/serverless
 - one for UI/container delivery
 - optionally one for local development
+
+### Event-stream persistence
+
+The `persistence` category can also model an append-only event log when it is the system of record.
+For those cases, `persistence/kafka-event-stream` captures Kafka topic, contract, ordering, and replay defaults for event-driven services.
+If you later need both Kafka and a relational or document database in the same target, that should be modeled as an extended composition shape rather than overloading a single `persistenceProfileRef`.
 
 ### Monorepo container stacks
 

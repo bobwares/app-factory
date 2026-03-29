@@ -1,0 +1,41 @@
+# App: target-tech-stack-profiles
+# File: kafka-event-stream.yaml
+# Version: 0.1.0
+# Turns: T016
+# Author: AI Coding Agent (GPT-5)
+# Date: 2026-03-29T08:34:51Z
+# Description: Apache Kafka event-stream persistence profile for ordered log storage and consumer-group processing
+
+version: 1
+kind: target-tech-stack-profile
+profile:
+  id: kafka-event-stream
+  category: persistence
+  engine: kafka
+  pattern: event-stream
+  platformFit:
+    preferredFor:
+      - serverless
+      - container
+  schemaStrategy:
+    topics:
+      namingConvention: dot-delimited-domain-events
+      partitioning: message-key
+      retention: policy-driven
+    contracts:
+      registry: recommended
+      formats:
+        - avro
+        - json-schema
+    evolution:
+      compatibility: backward
+  streaming:
+    producerSemantics: at-least-once
+    consumerSemantics: at-least-once-with-idempotency
+    ordering: partition
+    replay: supported
+  migrations:
+    model: topic-and-schema-evolution
+    seedSupport: false
+  localDevelopment:
+    engine: redpanda-or-single-node-kafka

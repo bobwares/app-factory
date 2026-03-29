@@ -78,11 +78,12 @@ Format output as a categorized table:
 | nextjs-hybrid-container-node | nextjs | turbopack | container |
 | react-spa-container-nginx | react | vite | container |
 
-## Persistence (2 profiles)
+## Persistence (3 profiles)
 
 | ID | Engine | Model |
 |----|--------|-------|
 | dynamodb-single-table | dynamodb | single-table |
+| kafka-event-stream | kafka | event-stream |
 | postgresql-service | postgresql | relational |
 
 ## IaC (8 profiles)
@@ -109,7 +110,7 @@ Format output as a categorized table:
 ...
 
 ═══════════════════════════════════════════════════════════════════════
-  Total: 29 profiles across 5 categories
+  Total: 30 profiles across 5 categories
 ═══════════════════════════════════════════════════════════════════════
 ```
 

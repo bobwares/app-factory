@@ -1,0 +1,197 @@
+{
+  "/ddb-sfn-stack": [
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Environment",
+          "value": "dev"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "app-factory"
+        },
+        {
+          "key": "Pattern",
+          "value": "dynamodb-stream-to-stepfunctions"
+        }
+      ]
+    }
+  ],
+  "/ddb-sfn-stack/SourceTable": [
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "SourceTable70380C26"
+      }
+    }
+  ],
+  "/ddb-sfn-stack/DdbToSfnPipe": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DdbToSfnPipe"
+    }
+  ],
+  "/ddb-sfn-stack/TableName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TableName"
+    }
+  ],
+  "/ddb-sfn-stack/TableArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TableArn"
+    }
+  ],
+  "/ddb-sfn-stack/TableStreamArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TableStreamArn"
+    }
+  ],
+  "/ddb-sfn-stack/StateMachineArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "StateMachineArn"
+    }
+  ],
+  "/ddb-sfn-stack/PipeName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PipeName"
+    }
+  ],
+  "/ddb-sfn-stack/ErrorTopicArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ErrorTopicArn"
+    }
+  ],
+  "/ddb-sfn-stack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/ddb-sfn-stack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/ddb-sfn-stack/SourceTable/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SourceTable70380C26"
+    }
+  ],
+  "/ddb-sfn-stack/ErrorTopic/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ErrorTopicA0904A23"
+    }
+  ],
+  "/ddb-sfn-stack/StateMachineLogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "StateMachineLogGroup15B91BCB"
+    }
+  ],
+  "/ddb-sfn-stack/PipeLogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PipeLogGroup607F807C"
+    }
+  ],
+  "/ddb-sfn-stack/InsertHandler/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "InsertHandlerED650EA2"
+    }
+  ],
+  "/ddb-sfn-stack/ModifyHandler/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ModifyHandler8504D511"
+    }
+  ],
+  "/ddb-sfn-stack/RemoveHandler/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RemoveHandler590DBC4D"
+    }
+  ],
+  "/ddb-sfn-stack/EventProcessorStateMachine/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EventProcessorStateMachine6DE3B934"
+    }
+  ],
+  "/ddb-sfn-stack/PipeRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PipeRole4D7B8476"
+    }
+  ],
+  "/ddb-sfn-stack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/ddb-sfn-stack/InsertHandler/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "InsertHandlerServiceRoleA6652B68"
+    }
+  ],
+  "/ddb-sfn-stack/ModifyHandler/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ModifyHandlerServiceRole38B23C14"
+    }
+  ],
+  "/ddb-sfn-stack/RemoveHandler/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RemoveHandlerServiceRole04F1F347"
+    }
+  ],
+  "/ddb-sfn-stack/EventProcessorStateMachine/Role/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EventProcessorStateMachineRole88E7E98E"
+    }
+  ],
+  "/ddb-sfn-stack/PipeRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PipeRoleDefaultPolicy84F54597"
+    }
+  ],
+  "/ddb-sfn-stack/InsertHandler/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "InsertHandlerServiceRoleDefaultPolicy1BA7B623"
+    }
+  ],
+  "/ddb-sfn-stack/ModifyHandler/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ModifyHandlerServiceRoleDefaultPolicyF777866B"
+    }
+  ],
+  "/ddb-sfn-stack/RemoveHandler/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RemoveHandlerServiceRoleDefaultPolicyC8264A43"
+    }
+  ],
+  "/ddb-sfn-stack/EventProcessorStateMachine/Role/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EventProcessorStateMachineRoleDefaultPolicy96D51E71"
+    }
+  ]
+}
