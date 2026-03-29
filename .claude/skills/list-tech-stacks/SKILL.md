@@ -99,16 +99,17 @@ Format output as a categorized table:
 | terraform-aws-serverless | terraform | aws |
 | terraform-kubernetes | terraform | kubernetes |
 
-## Stacks (10 profiles)
+## Stacks (11 profiles)
 
 | ID | Backend | UI |
 |----|---------|-----|
 | container-java-springboot__angular-spa-container-nginx | container-java-springboot | angular-spa-container-nginx |
 | container-java-springboot__react-spa-container-nginx | container-java-springboot | react-spa-container-nginx |
+| container-typescript-nestjs__nextjs-hybrid-container-node__turbo-monorepo | container-typescript-nestjs | nextjs-hybrid-container-node |
 ...
 
 ═══════════════════════════════════════════════════════════════════════
-  Total: 28 profiles across 5 categories
+  Total: 29 profiles across 5 categories
 ═══════════════════════════════════════════════════════════════════════
 ```
 

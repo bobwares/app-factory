@@ -9,3 +9,4 @@
 13,2026-03-29T00:26:14Z,2026-03-29T03:27:28Z,10874,turn/T13,81ea988,Implement Next.js hybrid container UI with App Router and Docker deployment
 14,2026-03-29T03:32:54Z,2026-03-29T03:48:20Z,926,turn/T14,pending,Export the Serverless Land pattern catalog to docs/aws-patterns.md
 15,2026-03-29T08:04:54Z,2026-03-29T08:11:30Z,396,turn/T15,pending,Create pattern resource reference docs for Spring Boot NestJS and Next.js
+16,2026-03-29T08:30:04Z,2026-03-29T08:32:59Z,176,turn/T16,pending,Add a Turbo monorepo tech stack profile for NestJS and Next.js

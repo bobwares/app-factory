@@ -1,0 +1,126 @@
+{
+  "turnId": 16,
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-16/execution_trace.json",
+    "skillsExecuted": [
+      "branch-guard",
+      "list-tech-stacks",
+      "session-start",
+      "turn-end",
+      "turn-init"
+    ],
+    "agentsExecuted": [
+      "codex"
+    ]
+  },
+  "tasks": [
+    {
+      "taskId": "T16-1",
+      "agent": "profile-modeler",
+      "inputs": [
+        "tech-stack-profiles/backend/container-typescript-nestjs.yaml",
+        "tech-stack-profiles/ui/nextjs-hybrid-container-node.yaml",
+        "tech-stack-profiles/README.md",
+        ".claude/skills/list-tech-stacks/SKILL.md"
+      ],
+      "outputs": [
+        {
+          "path": "tech-stack-profiles/stacks/container-typescript-nestjs__nextjs-hybrid-container-node__turbo-monorepo.yaml",
+          "sha256": "6e889a258dedb5cf0147dc0eb32fcf8e13331f00a2263cb2b45f0b49535897e3"
+        },
+        {
+          "path": "tech-stack-profiles/README.md",
+          "sha256": "0a30b1c5b28112bb1354c563a0d615c2fab43c7e4a2292cb594b3e7329a2d07f"
+        },
+        {
+          "path": ".claude/skills/list-tech-stacks/SKILL.md",
+          "sha256": "cc25b5f9793a85a1cd74b74c001a351b50245d58970fbb7e94c15b95c4b2b596"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-16/turn_context.md",
+          "sha256": "e88feef37ba962718a36e4a6d0ac2c8f595d0db85d4f8c3bd2f727349fe014d5"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-16/execution_trace.json",
+          "sha256": "5c08e799ebd24b079cde55ad69c02cc194403cd14b1a5b1182ac586d86b6df9f"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-16/pull_request.md",
+          "sha256": "49da7269f61abbfb40cf4b8643e49050d04ba3fbb03b4ddc9e968594385799cc"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-16/adr.md",
+          "sha256": "b1d248f80a7c4cde7a1a75dda1b6563bdefee82fef7669e59131d25e989d5cd2"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns_index.csv",
+          "sha256": "1f5804158cc337f71441f7d12ed28e6ce691be1f2ac34a00729cf77d4b0508e5"
+        }
+      ],
+      "validations": [
+        {
+          "rule": "profile-discovery",
+          "status": "passed",
+          "detailsPath": ""
+        },
+        {
+          "rule": "tests-pass",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "lint-clean",
+          "status": "skipped",
+          "detailsPath": ""
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "promptHash": "7dc710f071536cc4a2b54ad61312eda8e976d1a18b3cf75153021399a79dd524",
+    "tools": [
+      "Bash",
+      "Edit",
+      "Grep",
+      "Read"
+    ],
+    "startedAt": "2026-03-29T08:30:04Z",
+    "finishedAt": "2026-03-29T08:32:59Z",
+    "activePatternName": "Turbo monorepo stack",
+    "activePatternPath": "tech-stack-profiles/stacks/container-typescript-nestjs__nextjs-hybrid-container-node__turbo-monorepo.yaml"
+  },
+  "outputs": [
+    {
+      "path": "tech-stack-profiles/stacks/container-typescript-nestjs__nextjs-hybrid-container-node__turbo-monorepo.yaml",
+      "sha256": "6e889a258dedb5cf0147dc0eb32fcf8e13331f00a2263cb2b45f0b49535897e3"
+    },
+    {
+      "path": "tech-stack-profiles/README.md",
+      "sha256": "0a30b1c5b28112bb1354c563a0d615c2fab43c7e4a2292cb594b3e7329a2d07f"
+    },
+    {
+      "path": ".claude/skills/list-tech-stacks/SKILL.md",
+      "sha256": "cc25b5f9793a85a1cd74b74c001a351b50245d58970fbb7e94c15b95c4b2b596"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-16/turn_context.md",
+      "sha256": "e88feef37ba962718a36e4a6d0ac2c8f595d0db85d4f8c3bd2f727349fe014d5"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-16/execution_trace.json",
+      "sha256": "5c08e799ebd24b079cde55ad69c02cc194403cd14b1a5b1182ac586d86b6df9f"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-16/pull_request.md",
+      "sha256": "49da7269f61abbfb40cf4b8643e49050d04ba3fbb03b4ddc9e968594385799cc"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-16/adr.md",
+      "sha256": "b1d248f80a7c4cde7a1a75dda1b6563bdefee82fef7669e59131d25e989d5cd2"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns_index.csv",
+      "sha256": "1f5804158cc337f71441f7d12ed28e6ce691be1f2ac34a00729cf77d4b0508e5"
+    }
+  ]
+}
