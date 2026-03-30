@@ -1,0 +1,46 @@
+{
+  "name": "serverless-typescript-lambda",
+  "version": "0.1.0",
+  "description": "Serverless TypeScript Lambda with API Gateway, X-Ray tracing, and CloudWatch observability",
+  "author": "AI Coding Agent (Claude Opus 4.5)",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/handlers/*.ts --bundle --platform=node --target=node22 --outdir=dist --format=esm --external:@aws-sdk/*",
+    "build:watch": "npm run build -- --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:cov": "vitest run --coverage",
+    "lint": "eslint \"{src,tests}/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "local:api": "sam local start-api --warm-containers EAGER",
+    "local:invoke": "sam local invoke",
+    "deploy": "sam deploy",
+    "deploy:guided": "sam deploy --guided"
+  },
+  "dependencies": {
+    "@aws-lambda-powertools/logger": "^2.0.0",
+    "@aws-lambda-powertools/metrics": "^2.0.0",
+    "@aws-lambda-powertools/tracer": "^2.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.140",
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "aws-sdk-client-mock": "^4.0.0",
+    "esbuild": "^0.21.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
