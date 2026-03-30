@@ -40,4 +40,4 @@ Implements the `serverless-typescript-lambda` tech stack profile as a reference 
 
 ## PR URL
 
-[Pending — will be populated after PR creation]
+https://github.com/bobwares/app-factory/pull/6
