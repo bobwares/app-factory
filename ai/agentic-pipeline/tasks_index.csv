@@ -1,2 +1,2 @@
 task_id,branch,status,created_at,closed_at,pull_request_url,total_turns
-001,task/T001,pr-open,2026-03-30T00:00:00Z,,https://github.com/bobwares/app-factory/pull/6,1
+002,task/T002,pr-open,2026-03-31T19:07:58Z,,https://github.com/bobwares/app-factory/pull/7,2
