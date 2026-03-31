@@ -1,0 +1,175 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless TypeScript Lambda with API Gateway HTTP API and X-Ray tracing
+
+Globals:
+  Function:
+    Runtime: nodejs22.x
+    MemorySize: 256
+    Timeout: 30
+    Tracing: Active
+    Environment:
+      Variables:
+        NODE_OPTIONS: --enable-source-maps
+        LOG_LEVEL: INFO
+        POWERTOOLS_SERVICE_NAME: serverless-typescript-lambda
+        POWERTOOLS_METRICS_NAMESPACE: ServerlessApp
+
+Parameters:
+  Environment:
+    Type: String
+    Default: dev
+    AllowedValues:
+      - dev
+      - staging
+      - prod
+
+  JwtIssuer:
+    Type: String
+    Description: JWT issuer URL for token validation
+
+  JwtAudience:
+    Type: String
+    Description: JWT audience for token validation
+
+Resources:
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: !Ref Environment
+      CorsConfiguration:
+        AllowOrigins:
+          - '*'
+        AllowHeaders:
+          - Content-Type
+          - Authorization
+          - X-Correlation-Id
+        AllowMethods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+      Auth:
+        DefaultAuthorizer: JwtAuthorizer
+        Authorizers:
+          JwtAuthorizer:
+            AuthorizationScopes:
+              - openid
+            IdentitySource: $request.header.Authorization
+            JwtConfiguration:
+              issuer: !Ref JwtIssuer
+              audience:
+                - !Ref JwtAudience
+
+  HealthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub ${AWS::StackName}-health
+      CodeUri: dist/
+      Handler: health.handler
+      Description: Health check endpoint
+      Events:
+        HealthApi:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /health
+            Method: GET
+            Auth:
+              Authorizer: NONE
+        LivenessApi:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /health/live
+            Method: GET
+            Auth:
+              Authorizer: NONE
+        ReadinessApi:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /health/ready
+            Method: GET
+            Auth:
+              Authorizer: NONE
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: es2022
+        EntryPoints:
+          - src/handlers/health.ts
+
+  ExampleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub ${AWS::StackName}-example
+      CodeUri: dist/
+      Handler: example.handler
+      Description: Example protected endpoint
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ExampleTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ExampleTable
+      Events:
+        GetItems:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /items
+            Method: GET
+        GetItem:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /items/{id}
+            Method: GET
+        CreateItem:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /items
+            Method: POST
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: es2022
+        EntryPoints:
+          - src/handlers/example.ts
+
+  ExampleTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub ${AWS::StackName}-items
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      Tags:
+        - Key: Environment
+          Value: !Ref Environment
+
+Outputs:
+  ApiEndpoint:
+    Description: HTTP API endpoint URL
+    Value: !Sub https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}
+
+  HealthEndpoint:
+    Description: Health check endpoint
+    Value: !Sub https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/health
+
+  ExampleTableArn:
+    Description: DynamoDB table ARN
+    Value: !GetAtt ExampleTable.Arn

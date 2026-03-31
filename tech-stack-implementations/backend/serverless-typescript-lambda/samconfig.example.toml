@@ -1,0 +1,36 @@
+# SAM CLI configuration file
+# Copy to samconfig.toml and customize for your environment
+
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "serverless-typescript-lambda"
+resolve_s3 = true
+s3_prefix = "serverless-typescript-lambda"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "Environment=\"dev\" JwtIssuer=\"https://your-auth-provider.com\" JwtAudience=\"your-api-audience\""
+disable_rollback = false
+
+[default.local_start_api.parameters]
+warm_containers = "EAGER"
+env_vars = "env.json"
+
+[staging.deploy.parameters]
+stack_name = "serverless-typescript-lambda-staging"
+resolve_s3 = true
+s3_prefix = "serverless-typescript-lambda-staging"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "Environment=\"staging\" JwtIssuer=\"https://your-auth-provider.com\" JwtAudience=\"your-api-audience\""
+
+[prod.deploy.parameters]
+stack_name = "serverless-typescript-lambda-prod"
+resolve_s3 = true
+s3_prefix = "serverless-typescript-lambda-prod"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "Environment=\"prod\" JwtIssuer=\"https://your-auth-provider.com\" JwtAudience=\"your-api-audience\""
