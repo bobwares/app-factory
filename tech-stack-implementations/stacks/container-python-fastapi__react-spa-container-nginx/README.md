@@ -4,13 +4,13 @@ Combined stack with FastAPI backend and React SPA frontend.
 
 ## Components
 
-| Service | Port | Description |
-|---------|------|-------------|
-| **api** | 8000 | FastAPI backend |
-| **ui** | 3000 | React SPA (nginx) |
+| Service            | Port      | Description             |
+|--------------------|-----------|-------------------------|
+| **api**            | 8000      | FastAPI backend         |
+| **ui**             | 3000      | React SPA (nginx)       |
 | **otel-collector** | 4317/4318 | OpenTelemetry Collector |
-| **jaeger** | 16686 | Distributed tracing UI |
-| **prometheus** | 9090 | Metrics dashboard |
+| **jaeger**         | 16686     | Distributed tracing UI  |
+| **prometheus**     | 9090      | Metrics dashboard       |
 
 ## Quick Start
 
