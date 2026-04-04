@@ -1,6 +1,6 @@
 # Pull Request — Task 003
 
-**PR URL:** [pending]
+**PR URL:** https://github.com/bobwares/app-factory/pull/8
 
 ## Title
 
@@ -14,8 +14,8 @@ Update App Factory docs and implementation templates
 
 ## Test Plan
 
-- [ ] Run `git diff --cached --check`
-- [ ] Run `npm run lint` in `tech-stack-implementations/ui/nextjs-hybrid-container-node`
+- [x] Run `git diff --cached --check`
+- [x] Run `npm run lint` in `tech-stack-implementations/ui/nextjs-hybrid-container-node`
 - [ ] Review the updated App Factory documentation for workflow and architecture consistency
 
 ## Checklist
