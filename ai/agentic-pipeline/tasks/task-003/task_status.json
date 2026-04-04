@@ -1,0 +1,10 @@
+{
+  "taskId": "003",
+  "branch": "task/T003",
+  "baseBranch": "main",
+  "status": "candidate",
+  "createdAt": "2026-04-02T06:17:46Z",
+  "closedAt": null,
+  "pullRequestUrl": null,
+  "totalTurns": 3
+}

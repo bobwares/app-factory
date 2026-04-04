@@ -12,12 +12,10 @@
  * 4, 0.1.0, 2026/03/28, 07:15 PM, Claude Opus 4.5
  */
 
-import { NodeSDK } from '@opentelemetry/sdk-node';
+import { NodeSDK, metrics, resources } from '@opentelemetry/sdk-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
-import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
-import { Resource } from '@opentelemetry/resources';
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
@@ -36,12 +34,12 @@ const metricExporter = new OTLPMetricExporter({
 });
 
 const sdk = new NodeSDK({
-  resource: new Resource({
+  resource: new resources.Resource({
     [ATTR_SERVICE_NAME]: serviceName,
     [ATTR_SERVICE_VERSION]: serviceVersion,
   }),
   traceExporter,
-  metricReader: new PeriodicExportingMetricReader({
+  metricReader: new metrics.PeriodicExportingMetricReader({
     exporter: metricExporter,
     exportIntervalMillis: 15000,
   }),

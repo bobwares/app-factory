@@ -16,8 +16,12 @@ import {
   HttpStatus,
   Logger,
 } from '@nestjs/common';
-import { FastifyReply } from 'fastify';
 import type { ApiResponse } from '@repo/types';
+
+interface HttpReply {
+  status(statusCode: number): HttpReply;
+  send(body: ApiResponse): void;
+}
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
@@ -25,7 +29,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
 
   catch(exception: unknown, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
-    const response = ctx.getResponse<FastifyReply>();
+    const response = ctx.getResponse<HttpReply>();
 
     let status = HttpStatus.INTERNAL_SERVER_ERROR;
     let message = 'Internal server error';

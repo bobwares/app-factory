@@ -29,7 +29,7 @@ profile:
     dependencyInjection: nestjs
     validation: class-validator
     serialization: class-transformer
-    testing: vitest
+    testing: vitest, .http
     buildTool: npm
   observability:
     structuredLogging: true

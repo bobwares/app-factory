@@ -20,9 +20,18 @@ import {
   HttpStatus,
   LoggerService,
 } from '@nestjs/common';
-import { FastifyReply, FastifyRequest } from 'fastify';
 import { correlationStorage } from '../middleware/correlation-id.middleware';
 import { ApiResponse } from '../dto/api-response.dto';
+
+interface HttpReply {
+  status(statusCode: number): HttpReply;
+  send(body: ApiResponse<null>): void;
+}
+
+interface HttpRequestLike {
+  method?: string;
+  url?: string;
+}
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
@@ -30,8 +39,8 @@ export class GlobalExceptionFilter implements ExceptionFilter {
 
   catch(exception: unknown, host: ArgumentsHost): void {
     const ctx = host.switchToHttp();
-    const response = ctx.getResponse<FastifyReply>();
-    const request = ctx.getRequest<FastifyRequest>();
+    const response = ctx.getResponse<HttpReply>();
+    const request = ctx.getRequest<HttpRequestLike>();
 
     const correlationId = correlationStorage.getStore() || 'unknown';
 

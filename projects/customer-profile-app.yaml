@@ -1,0 +1,12 @@
+version: 0.1.0
+project:
+  id: customer-profile-app
+  name: "Customer Service App"
+  description: "Full Service Customer Maintenance application."
+
+metadata:
+  author: "bobwares"
+  created_at: "04/03/2026"
+
+tech_stack_profiles:
+  - "stacks/container-typescript-nestjs__nextjs-hybrid-container-node__turbo-monorepo"

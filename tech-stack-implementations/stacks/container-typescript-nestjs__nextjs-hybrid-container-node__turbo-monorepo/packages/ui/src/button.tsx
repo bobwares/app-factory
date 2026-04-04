@@ -8,6 +8,8 @@
  * Description: Reusable Button component with variants, sizes, and loading state
  */
 
+'use client';
+
 import React from 'react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
