@@ -12,8 +12,9 @@
  * 4, 0.1.0, 2026/03/28, 07:15 PM, Claude Opus 4.5
  */
 
+
 import { Injectable, NestMiddleware } from '@nestjs/common';
-import { FastifyRequest, FastifyReply } from 'fastify';
+import type { IncomingMessage, ServerResponse } from 'node:http';
 import { v4 as uuidv4 } from 'uuid';
 import { AsyncLocalStorage } from 'async_hooks';
 
@@ -22,14 +23,23 @@ export const CORRELATION_ID_HEADER = 'x-correlation-id';
 
 @Injectable()
 export class CorrelationIdMiddleware implements NestMiddleware {
-  use(req: FastifyRequest['raw'], res: FastifyReply['raw'], next: () => void): void {
-    const correlationId =
-      (req.headers[CORRELATION_ID_HEADER] as string) || uuidv4();
+  use(req: IncomingMessage, res: ServerResponse, next: () => void): void {
+    const correlationId = this.getHeaderValue(req, CORRELATION_ID_HEADER) ?? uuidv4();
 
     res.setHeader(CORRELATION_ID_HEADER, correlationId);
 
     correlationStorage.run(correlationId, () => {
       next();
     });
+  }
+
+  private getHeaderValue(req: IncomingMessage, name: string): string | undefined {
+    const value = req.headers[name];
+
+    if (typeof value === 'string') {
+      return value;
+    }
+
+    return Array.isArray(value) ? value[0] : undefined;
   }
 }

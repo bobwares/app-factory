@@ -8,8 +8,9 @@
  * Description: Next.js home page with API health status and service overview
  */
 
-import { Card, StatusBadge, Button } from '@repo/ui';
+import { Card, StatusBadge } from '@repo/ui';
 import type { HealthStatus } from '@repo/types';
+import { RefreshButton } from './refresh-button';
 
 async function getApiHealth(): Promise<HealthStatus | null> {
   try {

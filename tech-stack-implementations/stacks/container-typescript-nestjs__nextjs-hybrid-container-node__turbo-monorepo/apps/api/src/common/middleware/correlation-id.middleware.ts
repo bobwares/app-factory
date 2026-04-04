@@ -8,19 +8,30 @@
  * Description: Middleware to propagate or generate correlation IDs for request tracing
  */
 
+
 import { Injectable, NestMiddleware } from '@nestjs/common';
-import { FastifyRequest, FastifyReply } from 'fastify';
+import type { IncomingMessage, ServerResponse } from 'node:http';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class CorrelationIdMiddleware implements NestMiddleware {
-  use(req: FastifyRequest['raw'], res: FastifyReply['raw'], next: () => void) {
+  use(req: IncomingMessage, res: ServerResponse, next: () => void) {
     const correlationId =
-      (req.headers['x-correlation-id'] as string) ||
-      (req.headers['x-request-id'] as string) ||
+      this.getHeaderValue(req, 'x-correlation-id') ??
+      this.getHeaderValue(req, 'x-request-id') ??
       uuidv4();
 
     res.setHeader('x-correlation-id', correlationId);
     next();
+  }
+
+  private getHeaderValue(req: IncomingMessage, name: string): string | undefined {
+    const value = req.headers[name];
+
+    if (typeof value === 'string') {
+      return value;
+    }
+
+    return Array.isArray(value) ? value[0] : undefined;
   }
 }
