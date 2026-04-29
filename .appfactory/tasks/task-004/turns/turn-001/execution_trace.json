@@ -1,0 +1,9 @@
+{
+  "taskId": "004",
+  "turnId": "001",
+  "startedAt": "2026-04-07T21:54:49Z",
+  "endedAt": "2026-04-07T22:17:32Z",
+  "skillsExecuted": ["task-init", "turn-end"],
+  "agentsExecuted": [],
+  "notes": "Added three validation checks to af-project-init: (1) project YAML must exist, (2) GitHub repo must not exist, (3) project directory must not exist on disk"
+}
