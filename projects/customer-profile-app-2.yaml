@@ -1,6 +1,6 @@
 version: 0.1.0
 project:
-  id: customer-profile-app
+  id: customer-profile-app-2
   name: "Customer Service App"
   description: "Full Service Customer Maintenance application."
 

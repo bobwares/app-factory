@@ -1,0 +1,21 @@
+{
+  "taskId": "004",
+  "turnId": "003",
+  "branch": "task/T004",
+  "startedAt": "2026-04-28T14:48:50Z",
+  "endedAt": "2026-04-28T14:55:42Z",
+  "elapsedSeconds": 412,
+  "status": "completed",
+  "filesChanged": [
+    "patterns/architecture-patterns.md",
+    "patterns/architecture-patterns.yaml",
+    ".appfactory/tasks/task-004/turns/turn-003/turn_context.md",
+    ".appfactory/tasks/task-004/turns/turn-003/execution_trace.json",
+    ".appfactory/tasks/task-004/turns/turn-003/adr.md",
+    ".appfactory/tasks/task-004/turns/turn-003/manifest.json",
+    ".appfactory/tasks/task-004/task_status.json"
+  ],
+  "skillsExecuted": ["turn-init", "turn-end"],
+  "agentsExecuted": [],
+  "summary": "Generated 30 architecture-level patterns in Markdown and YAML DSL formats"
+}

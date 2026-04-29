@@ -1,0 +1,27 @@
+{
+  "taskId": "004",
+  "turnId": "006",
+  "branch": "task/T004",
+  "startedAt": "2026-04-29T19:26:54Z",
+  "endedAt": "2026-04-29T19:28:58Z",
+  "status": "completed",
+  "filesChanged": [
+    ".appfactory/tasks/task-004/task_status.json",
+    ".appfactory/tasks/task-004/turns/turn-006/turn_context.md",
+    ".appfactory/tasks/task-004/turns/turn-006/execution_trace.json",
+    ".appfactory/tasks/task-004/turns/turn-006/adr.md",
+    ".appfactory/tasks/task-004/turns/turn-006/manifest.json",
+    "design/patterns/Domain Architecture Patterns/Bounded Context Pattern.md",
+    "design/patterns/Domain Architecture Patterns/Context Map Pattern.md",
+    "design/patterns/Domain Architecture Patterns/Domain Event Pattern.md",
+    "design/patterns/Domain Architecture Patterns/Repository Pattern.md",
+    "design/patterns/High Level Architecture Patterns List.md"
+  ],
+  "skillsExecuted": [
+    "session-start",
+    "turn-init",
+    "turn-end"
+  ],
+  "agentsExecuted": [],
+  "summary": "Added four new Domain Architecture pattern documents from the prioritized backlog and registered them in the high-level pattern index."
+}
