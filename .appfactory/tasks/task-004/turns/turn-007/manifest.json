@@ -1,0 +1,25 @@
+{
+  "taskId": "004",
+  "turnId": "007",
+  "branch": "task/T004",
+  "startedAt": "2026-04-29T19:53:51Z",
+  "endedAt": "2026-04-29T20:20:10Z",
+  "status": "completed",
+  "filesChanged": [
+    ".appfactory/tasks/task-004/pull_request.md",
+    ".appfactory/tasks/task-004/task_status.json",
+    ".appfactory/tasks/task-004/task_summary.md",
+    ".appfactory/tasks/task-004/turns/turn-007/turn_context.md",
+    ".appfactory/tasks/task-004/turns/turn-007/execution_trace.json",
+    ".appfactory/tasks/task-004/turns/turn-007/adr.md",
+    ".appfactory/tasks/task-004/turns/turn-007/manifest.json",
+    ".appfactory/tasks_index.csv"
+  ],
+  "skillsExecuted": [
+    "turn-init",
+    "task-close",
+    "turn-end"
+  ],
+  "agentsExecuted": [],
+  "summary": "Closed task 004 by committing branch work, pushing task/T004, opening PR #9, and recording the PR URL in the task artifacts."
+}

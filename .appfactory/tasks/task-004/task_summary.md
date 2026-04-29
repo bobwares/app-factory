@@ -16,4 +16,4 @@ Capture and organize App Factory architecture-pattern guidance into reusable rep
 
 ## Status
 
-Candidate for pull request
+Pull request open: https://github.com/bobwares/app-factory/pull/9

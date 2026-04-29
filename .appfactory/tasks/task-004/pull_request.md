@@ -23,4 +23,8 @@ Add App Factory architecture pattern library and implementation mapping
 
 ## Status
 
-Candidate
+PR Open
+
+## URL
+
+https://github.com/bobwares/app-factory/pull/9
