@@ -1,0 +1,8 @@
+{
+  "turnId": "2",
+  "startedAt": "2026-03-28T17:15:00Z",
+  "finishedAt": "2026-03-28T17:28:32Z",
+  "skillsExecuted": ["session-start", "turn-end", "turn-init"],
+  "agentsExecuted": ["claude-code"],
+  "notes": "Scaffolding Spring Boot backend from container-java-springboot profile"
+}

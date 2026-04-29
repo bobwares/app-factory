@@ -1,0 +1,23 @@
+{
+  "taskId": "003",
+  "turnId": "002",
+  "branch": "task/T003",
+  "startedAt": "2026-04-04T16:56:23Z",
+  "endedAt": "2026-04-04T17:00:31Z",
+  "status": "completed",
+  "skillsExecuted": [
+    "turn-init",
+    "turn-end"
+  ],
+  "agentsExecuted": [],
+  "filesChanged": [
+    "ai/agentic-pipeline/tasks/task-003/task_status.json",
+    "ai/agentic-pipeline/tasks/task-003/turns/turn-002/turn_context.md",
+    "ai/agentic-pipeline/tasks/task-003/turns/turn-002/execution_trace.json",
+    "ai/agentic-pipeline/tasks/task-003/turns/turn-002/adr.md",
+    "ai/agentic-pipeline/tasks/task-003/turns/turn-002/manifest.json",
+    "docs/appfactory-agentic-pipeline-overview.md",
+    "docs/appfactory-agentic-pipeline-scan-notes.md"
+  ],
+  "summary": "Created two evidence-based overview documents for the AppFactory ecosystem and finalized the turn tracking artifacts for task 003 turn 002."
+}

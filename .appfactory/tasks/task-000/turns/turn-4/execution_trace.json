@@ -1,0 +1,8 @@
+{
+  "turnId": "4",
+  "startedAt": "2026-03-28T19:15:00Z",
+  "finishedAt": "2026-03-28T19:27:34Z",
+  "skillsExecuted": ["session-start", "turn-init", "turn-end"],
+  "agentsExecuted": ["claude"],
+  "notes": "Implemented container-typescript-nestjs tech stack with NestJS 10.x, Fastify, OpenTelemetry, and JWT auth"
+}

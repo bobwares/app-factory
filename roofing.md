@@ -1,0 +1,14 @@
+
+
+| Business                          | appt       | Distance     | Phone            | Facebook                                                                                      | Google                                                                                      | Website                                                                 |
+| --------------------------------- |------------| ------------ | ---------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Roof Lux                          | 4/16 11:00 | ~3–5 miles   | `(573) 693-1050` | [Facebook](https://www.facebook.com/CommercialRoofLux/)                                       | [Google](https://www.google.com/search?q=Roof+Lux+Lake+Ozark+MO)                            | [Website](https://rooflux.com)                                          |
+| Luecke's Roofing                  |            | ~40–50 miles | `(573) 455-2585` | [Facebook](https://www.facebook.com/LueckesRoofingOsageExteriorsLlc/)                         | [Google](https://www.google.com/search?q=Luecke%27s+Roofing+Freeburg+MO)                    | [Website](https://lueckesroofing.com/)                                  |
+| Chavez Enterprises                | message    | ~35–45 miles | `(573) 821-7663` | [Facebook](https://www.facebook.com/chavezenterprisesllc/)                                    | [Google](https://www.google.com/search?q=Chavez+Enterprises+Jefferson+City+MO+roofing)      | [Website](https://www.thechavezenterprises.com/)                        |
+| The Wright Construction & Roofing | message    | ~5–10 miles  | `(573) 692-5534` | [Facebook](https://www.facebook.com/p/The-Wright-Roofing-and-Construction-Co-61552223481207/) | [Google](https://www.google.com/search?q=The+Wright+Construction+and+Roofing+Lake+Ozark+MO) | [Website](https://wrightroofingconstruction.com/)                       |
+| Huebner and Son Construction      |            | ~10–15 miles | `(573) 836-3764` | [Facebook](https://www.facebook.com/p/Huebner-and-Son-Construction-61566542439919/)           | [Google](https://www.google.com/search?q=Huebner+and+Son+Construction+Camdenton+MO)         | [Website](https://sites.google.com/view/huebnerandsonconstruction/home) |
+| Black & White Roofing             |            | ~8–12 miles  | `(573) 693-9944` | [Facebook](https://www.facebook.com/BlackWhiteRoofing/)                                       | [Google](https://www.google.com/search?q=Black+%26+White+Roofing+Lake+Ozark+MO)             | [Website](https://blackandwhiteroof.com/)                               |
+
+
+
+Elite Roofing and Siding.

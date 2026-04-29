@@ -1,0 +1,366 @@
+{
+  "turnId": 1,
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-1/execution_trace.json",
+    "skillsExecuted": [
+      "session-start",
+      "turn-init",
+      "turn-end"
+    ],
+    "agentsExecuted": [
+      "claude"
+    ]
+  },
+  "tasks": [
+    {
+      "taskId": "T1-1",
+      "agent": "claude",
+      "inputs": [
+        "/Users/bobware/gallery/target-tech-stack-profiles/profiles"
+      ],
+      "outputs": [
+        {
+          "path": "tech-stack-profiles/.DS_Store",
+          "sha256": "1272ed78e3ab7ab506de2e5ccf64486489b25ef67afdb506e47b8e0cbfb885fc"
+        },
+        {
+          "path": "tech-stack-profiles/backend/container-java-springboot.yaml",
+          "sha256": "e39bdf3a7921c1a30fe8bd6bb8998c295fd3269910df7c74a528b9a4efe33692"
+        },
+        {
+          "path": "tech-stack-profiles/backend/container-python-fastapi.yaml",
+          "sha256": "df0711189682161cc16d8abb54c99e9e4db96d67954a235041a1cca8cb288991"
+        },
+        {
+          "path": "tech-stack-profiles/backend/container-typescript-nestjs.yaml",
+          "sha256": "96570f79ebba2419b5bcdb6ff7694926d5d1bc061cee9bd5220f531506c6af31"
+        },
+        {
+          "path": "tech-stack-profiles/backend/serverless-python-lambda.yaml",
+          "sha256": "73e950e7d5e61b1b71d553235efb48320cce62bce572815f77c02b73d995c331"
+        },
+        {
+          "path": "tech-stack-profiles/backend/serverless-typescript-lambda.yaml",
+          "sha256": "f8a96d3c10e299c74aeb86d6647a3377c6951865b8279d36068f157c40aff9f1"
+        },
+        {
+          "path": "tech-stack-profiles/iac/aws-cdk-ecs-fargate-typescript.yaml",
+          "sha256": "d8e020ad7ac56c3a3d9da109fc44d0edf635ecbb87efe817681aec96eb4ba8e1"
+        },
+        {
+          "path": "tech-stack-profiles/iac/aws-cdk-serverless-typescript.yaml",
+          "sha256": "71e964f7f3e95e58fb3d9378b16f0976c2006b0fcfcf89bea79c188db36c5b9b"
+        },
+        {
+          "path": "tech-stack-profiles/iac/aws-sam-serverless.yaml",
+          "sha256": "80551bfad9737e6e1d7c774d84eeb9f0098d464a895e75328fa1b200333133ce"
+        },
+        {
+          "path": "tech-stack-profiles/iac/docker-compose-local-dev.yaml",
+          "sha256": "0b7de9a1ff1fc8f4d780cc4cdb4245736853b7e023b17db073576c43b05b2e95"
+        },
+        {
+          "path": "tech-stack-profiles/iac/helm-kubernetes-packaging.yaml",
+          "sha256": "a6b5b7ff3422b26981a1cb64b6792bfad878e817a89c5d43679bf408a16a0240"
+        },
+        {
+          "path": "tech-stack-profiles/iac/terraform-aws-ecs-fargate.yaml",
+          "sha256": "7b11d0343a63649fbdea16411586353007435d72bb8d5a74f6f58898492363a8"
+        },
+        {
+          "path": "tech-stack-profiles/iac/terraform-aws-ecs-ui.yaml",
+          "sha256": "e5ac382d13260c28e9e87099344f47aeb8946c07ef3cf0736e70d3f06bdebfb7"
+        },
+        {
+          "path": "tech-stack-profiles/iac/terraform-aws-serverless.yaml",
+          "sha256": "faa62bd82ea6d3a4a6b4db4b7a73ddbd3eae1bdd3ba8b14ba6d48b057d636947"
+        },
+        {
+          "path": "tech-stack-profiles/iac/terraform-kubernetes.yaml",
+          "sha256": "0a0411d46c846382264ee888583c46ebb299b3ff2602665baa6a65b6a590e8c0"
+        },
+        {
+          "path": "tech-stack-profiles/persistence/dynamodb-single-table.yaml",
+          "sha256": "71bb89c00ff0922a7406ea2cd073f71e7b42c43f2a95208c35888b44b408ca42"
+        },
+        {
+          "path": "tech-stack-profiles/persistence/postgresql-service.yaml",
+          "sha256": "654270565a23a700226c2848c9cfc3aca657c79339e7449860898e654f854614"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/container-java-springboot__angular-spa-container-nginx.yaml",
+          "sha256": "f2a000fbebc2af1982fe62bac2a7a3c4fecce412ed0eb741f7c73b1e9d63f953"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/container-java-springboot__react-spa-container-nginx.yaml",
+          "sha256": "62282c9a5607e84fea03f4a01d423eacb608a038c3cbce6d422ea1d7ef5c0e01"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/container-python-fastapi__angular-spa-container-nginx.yaml",
+          "sha256": "a902623f1fd316f44cb88d0d89dc90b013ef1532090f10e60c6fbd7e286675e1"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/container-python-fastapi__react-spa-container-nginx.yaml",
+          "sha256": "6bc4212697622ee44b14733545ade9ff6a32001fb53ccb45a40d5f88be2b9e89"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/container-typescript-nestjs__angular-spa-container-nginx.yaml",
+          "sha256": "36673b8152fc0bb98b67612499ade6c3c8e33d87b763297076801bcbd16f153a"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/container-typescript-nestjs__react-spa-container-nginx.yaml",
+          "sha256": "6dd31bd59e0b2b4e0b106a0dda8ca9b7a434bd6f23cf362b7aaba14bfe8534d1"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/serverless-python-lambda__angular-spa-container-nginx.yaml",
+          "sha256": "0b13617ad10b3c36fcc1bb4a8474b30a47c4e71393a66cc3942d933cccb26cc2"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/serverless-python-lambda__react-spa-container-nginx.yaml",
+          "sha256": "718e998f8ac979c294fb2ee54c2744e9da610e1dd4db00efa826b33a22bbb820"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/serverless-typescript-lambda__angular-spa-container-nginx.yaml",
+          "sha256": "55a64bc87e47b6215b04cb3a76a7229f441830f91140ffdc5a63e8e35c386e75"
+        },
+        {
+          "path": "tech-stack-profiles/stacks/serverless-typescript-lambda__react-spa-container-nginx.yaml",
+          "sha256": "a9cae290148c5ec67b8de4841565588d794c20af7138b4b1372ad8e6a30aea80"
+        },
+        {
+          "path": "tech-stack-profiles/ui/angular-spa-container-nginx.yaml",
+          "sha256": "953f6d457744552690f8134bee9c71b692d7ca0bc5f1b5629f02f3d9737ed213"
+        },
+        {
+          "path": "tech-stack-profiles/ui/nextjs-hybrid-container-node.yaml",
+          "sha256": "67a0f5a3d59a20761a6d8e5a31b12fb4a2b5803a6b4c9928f73910a232e84346"
+        },
+        {
+          "path": "tech-stack-profiles/ui/react-spa-container-nginx.yaml",
+          "sha256": "08f4dcd7bc71487f60066394c8948f0a272e7fcc8667fd0bf22f12a8c294b4f9"
+        }
+      ],
+      "validations": [
+        {
+          "rule": "metadata-headers",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "version-incremented",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "tests-pass",
+          "status": "skipped",
+          "detailsPath": ""
+        }
+      ]
+    },
+    {
+      "taskId": "T1-2",
+      "agent": "claude",
+      "inputs": [
+        "/Users/bobware/coding-agents-config/skills/session-start/SKILL.md",
+        "/Users/bobware/coding-agents-config/skills/turn-init/SKILL.md",
+        "/Users/bobware/coding-agents-config/skills/turn-end/SKILL.md",
+        "/Users/bobware/coding-agents-config/archive/templates/pull_request_template.md",
+        "/Users/bobware/coding-agents-config/archive/templates/manifest.schema.json"
+      ],
+      "outputs": [
+        {
+          "path": "ai/agentic-pipeline/turns/turn-1/adr.md",
+          "sha256": "3845344ca0d6eb04d92e1c41b7cbdc13dab73d2724167b2da824a25db9bd4935"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-1/execution_trace.json",
+          "sha256": "37319d7671e012b4728cdcf8f9076e9ed843332f3e5e19005ddd0b24bd2c2e61"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-1/pull_request.md",
+          "sha256": "f49522369cd8cccc6de64116976f2788e35ba9c013fdcf91d0a85372018df46c"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-1/turn_context.md",
+          "sha256": "ae0e276f2aadd8af61f35a480f4777c1ff4843d210e818abf4b2ff84af20238c"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns_index.csv",
+          "sha256": "ac9746961e1e5e18d9bf9aeab71e9f83a34a4826c9b3043e812533982002409f"
+        }
+      ],
+      "validations": [
+        {
+          "rule": "metadata-headers",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "tests-pass",
+          "status": "skipped",
+          "detailsPath": ""
+        },
+        {
+          "rule": "lint-clean",
+          "status": "skipped",
+          "detailsPath": ""
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "promptHash": "3158db5c7c32251f43c4f46b3980e9a45feb25ca4e7270d9df2082dcbf7ac6e0",
+    "tools": [
+      "Bash",
+      "Edit",
+      "Grep"
+    ],
+    "startedAt": "2026-03-27T21:32:36Z",
+    "finishedAt": "2026-03-27T21:33:24Z",
+    "activePatternName": "",
+    "activePatternPath": ""
+  },
+  "outputs": [
+    {
+      "path": "tech-stack-profiles/.DS_Store",
+      "sha256": "1272ed78e3ab7ab506de2e5ccf64486489b25ef67afdb506e47b8e0cbfb885fc"
+    },
+    {
+      "path": "tech-stack-profiles/backend/container-java-springboot.yaml",
+      "sha256": "e39bdf3a7921c1a30fe8bd6bb8998c295fd3269910df7c74a528b9a4efe33692"
+    },
+    {
+      "path": "tech-stack-profiles/backend/container-python-fastapi.yaml",
+      "sha256": "df0711189682161cc16d8abb54c99e9e4db96d67954a235041a1cca8cb288991"
+    },
+    {
+      "path": "tech-stack-profiles/backend/container-typescript-nestjs.yaml",
+      "sha256": "96570f79ebba2419b5bcdb6ff7694926d5d1bc061cee9bd5220f531506c6af31"
+    },
+    {
+      "path": "tech-stack-profiles/backend/serverless-python-lambda.yaml",
+      "sha256": "73e950e7d5e61b1b71d553235efb48320cce62bce572815f77c02b73d995c331"
+    },
+    {
+      "path": "tech-stack-profiles/backend/serverless-typescript-lambda.yaml",
+      "sha256": "f8a96d3c10e299c74aeb86d6647a3377c6951865b8279d36068f157c40aff9f1"
+    },
+    {
+      "path": "tech-stack-profiles/iac/aws-cdk-ecs-fargate-typescript.yaml",
+      "sha256": "d8e020ad7ac56c3a3d9da109fc44d0edf635ecbb87efe817681aec96eb4ba8e1"
+    },
+    {
+      "path": "tech-stack-profiles/iac/aws-cdk-serverless-typescript.yaml",
+      "sha256": "71e964f7f3e95e58fb3d9378b16f0976c2006b0fcfcf89bea79c188db36c5b9b"
+    },
+    {
+      "path": "tech-stack-profiles/iac/aws-sam-serverless.yaml",
+      "sha256": "80551bfad9737e6e1d7c774d84eeb9f0098d464a895e75328fa1b200333133ce"
+    },
+    {
+      "path": "tech-stack-profiles/iac/docker-compose-local-dev.yaml",
+      "sha256": "0b7de9a1ff1fc8f4d780cc4cdb4245736853b7e023b17db073576c43b05b2e95"
+    },
+    {
+      "path": "tech-stack-profiles/iac/helm-kubernetes-packaging.yaml",
+      "sha256": "a6b5b7ff3422b26981a1cb64b6792bfad878e817a89c5d43679bf408a16a0240"
+    },
+    {
+      "path": "tech-stack-profiles/iac/terraform-aws-ecs-fargate.yaml",
+      "sha256": "7b11d0343a63649fbdea16411586353007435d72bb8d5a74f6f58898492363a8"
+    },
+    {
+      "path": "tech-stack-profiles/iac/terraform-aws-ecs-ui.yaml",
+      "sha256": "e5ac382d13260c28e9e87099344f47aeb8946c07ef3cf0736e70d3f06bdebfb7"
+    },
+    {
+      "path": "tech-stack-profiles/iac/terraform-aws-serverless.yaml",
+      "sha256": "faa62bd82ea6d3a4a6b4db4b7a73ddbd3eae1bdd3ba8b14ba6d48b057d636947"
+    },
+    {
+      "path": "tech-stack-profiles/iac/terraform-kubernetes.yaml",
+      "sha256": "0a0411d46c846382264ee888583c46ebb299b3ff2602665baa6a65b6a590e8c0"
+    },
+    {
+      "path": "tech-stack-profiles/persistence/dynamodb-single-table.yaml",
+      "sha256": "71bb89c00ff0922a7406ea2cd073f71e7b42c43f2a95208c35888b44b408ca42"
+    },
+    {
+      "path": "tech-stack-profiles/persistence/postgresql-service.yaml",
+      "sha256": "654270565a23a700226c2848c9cfc3aca657c79339e7449860898e654f854614"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/container-java-springboot__angular-spa-container-nginx.yaml",
+      "sha256": "f2a000fbebc2af1982fe62bac2a7a3c4fecce412ed0eb741f7c73b1e9d63f953"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/container-java-springboot__react-spa-container-nginx.yaml",
+      "sha256": "62282c9a5607e84fea03f4a01d423eacb608a038c3cbce6d422ea1d7ef5c0e01"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/container-python-fastapi__angular-spa-container-nginx.yaml",
+      "sha256": "a902623f1fd316f44cb88d0d89dc90b013ef1532090f10e60c6fbd7e286675e1"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/container-python-fastapi__react-spa-container-nginx.yaml",
+      "sha256": "6bc4212697622ee44b14733545ade9ff6a32001fb53ccb45a40d5f88be2b9e89"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/container-typescript-nestjs__angular-spa-container-nginx.yaml",
+      "sha256": "36673b8152fc0bb98b67612499ade6c3c8e33d87b763297076801bcbd16f153a"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/container-typescript-nestjs__react-spa-container-nginx.yaml",
+      "sha256": "6dd31bd59e0b2b4e0b106a0dda8ca9b7a434bd6f23cf362b7aaba14bfe8534d1"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/serverless-python-lambda__angular-spa-container-nginx.yaml",
+      "sha256": "0b13617ad10b3c36fcc1bb4a8474b30a47c4e71393a66cc3942d933cccb26cc2"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/serverless-python-lambda__react-spa-container-nginx.yaml",
+      "sha256": "718e998f8ac979c294fb2ee54c2744e9da610e1dd4db00efa826b33a22bbb820"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/serverless-typescript-lambda__angular-spa-container-nginx.yaml",
+      "sha256": "55a64bc87e47b6215b04cb3a76a7229f441830f91140ffdc5a63e8e35c386e75"
+    },
+    {
+      "path": "tech-stack-profiles/stacks/serverless-typescript-lambda__react-spa-container-nginx.yaml",
+      "sha256": "a9cae290148c5ec67b8de4841565588d794c20af7138b4b1372ad8e6a30aea80"
+    },
+    {
+      "path": "tech-stack-profiles/ui/angular-spa-container-nginx.yaml",
+      "sha256": "953f6d457744552690f8134bee9c71b692d7ca0bc5f1b5629f02f3d9737ed213"
+    },
+    {
+      "path": "tech-stack-profiles/ui/nextjs-hybrid-container-node.yaml",
+      "sha256": "67a0f5a3d59a20761a6d8e5a31b12fb4a2b5803a6b4c9928f73910a232e84346"
+    },
+    {
+      "path": "tech-stack-profiles/ui/react-spa-container-nginx.yaml",
+      "sha256": "08f4dcd7bc71487f60066394c8948f0a272e7fcc8667fd0bf22f12a8c294b4f9"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-1/adr.md",
+      "sha256": "3845344ca0d6eb04d92e1c41b7cbdc13dab73d2724167b2da824a25db9bd4935"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-1/execution_trace.json",
+      "sha256": "37319d7671e012b4728cdcf8f9076e9ed843332f3e5e19005ddd0b24bd2c2e61"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-1/pull_request.md",
+      "sha256": "f49522369cd8cccc6de64116976f2788e35ba9c013fdcf91d0a85372018df46c"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-1/turn_context.md",
+      "sha256": "ae0e276f2aadd8af61f35a480f4777c1ff4843d210e818abf4b2ff84af20238c"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns_index.csv",
+      "sha256": "ac9746961e1e5e18d9bf9aeab71e9f83a34a4826c9b3043e812533982002409f"
+    }
+  ]
+}

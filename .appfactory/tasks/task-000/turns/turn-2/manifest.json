@@ -1,0 +1,121 @@
+{
+  "turnId": "2",
+  "createdAt": "2026-03-28T17:28:32Z",
+  "profile": "container-java-springboot",
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-2/execution_trace.json",
+    "skillsExecuted": ["session-start", "turn-end", "turn-init"],
+    "agentsExecuted": ["claude-code"]
+  },
+  "artifacts": {
+    "turnArtifacts": [
+      {
+        "path": "ai/agentic-pipeline/turns/turn-2/turn_context.md",
+        "type": "context"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-2/execution_trace.json",
+        "type": "trace"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-2/pull_request.md",
+        "type": "pr"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-2/adr.md",
+        "type": "adr"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-2/manifest.json",
+        "type": "manifest"
+      }
+    ],
+    "sourceFiles": [
+      {
+        "path": "poc/pom.xml",
+        "sha256": "23fafe019803ff194b2a0c33897155c525a7b3a65b2c358772bfb99ea11ab8f0",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/Dockerfile",
+        "sha256": "71607e67209f5ba4765a877e3c88f35981b54c41ad2654546695088172c89f81",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/docker-compose.yml",
+        "sha256": "134c866b9e4352557b3f78fc684343ae2647037a5ea10d2d5bb9fbe96d50dd94",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/otel-collector-config.yaml",
+        "sha256": "c4daf644804bad6115bfc1c5987bd46fd696487bba1b2b879e93ee402ce0ad97",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/README.md",
+        "sha256": "48dfaa4975f9c3c27748b27b76bcfc5b5ac38a7402ea4c08d802fa08cbf78e9a",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/java/com/example/api/Application.java",
+        "sha256": "f1aafa47428218ccd016d522b3b20723a32e619e07b7598957459b388f5627a4",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/java/com/example/api/config/SecurityConfig.java",
+        "sha256": "26682814284aa22ac37d02316d4e3c62a4874729c9cf4cfccd747fe29e4253cb",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/java/com/example/api/config/ObservabilityConfig.java",
+        "sha256": "88416ecfd9411b558ee03df727360f584fc022b91bcc1b9572cd6cd44e6e56aa",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/java/com/example/api/config/CorrelationIdFilter.java",
+        "sha256": "9fdfc139c96649ca1652fdf35976174e17a3ce3898bea380e1ff5143764a681c",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/java/com/example/api/controller/HealthController.java",
+        "sha256": "e38e0f5ddffa427032628bc7336c1e90e0ae956ab1621d2033e764041ad7d0d6",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/java/com/example/api/service/HealthService.java",
+        "sha256": "d9ad17b624777d396822e2ec191e81d98a7e3e8812628ca41a2d42c7d3bead7b",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/java/com/example/api/dto/ApiResponse.java",
+        "sha256": "2771d0ad36758cea0ca57328e8b47d182bd66a40f96aa49309d25ed297c5f17f",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/java/com/example/api/exception/GlobalExceptionHandler.java",
+        "sha256": "4aaac7b3a3ef04a91711c66cf03e1a82ea8520aa1f3b9765280634dd45a3e47f",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/resources/application.yml",
+        "sha256": "423633b8a3b4d0bf160306eb46bb9f1cd5bddc4fb8d914b31727f309e12a2f95",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/resources/application-local.yml",
+        "sha256": "e9fbb7403377bb2c142b36eead911e895fa5484e116987619fb129c709e7a78f",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/main/resources/logback-spring.xml",
+        "sha256": "e9191d297437ee507661eedbc31eacb28e26ee8462e26671e5653bca942a45f4",
+        "version": "0.1.0"
+      },
+      {
+        "path": "poc/src/test/java/com/example/api/HealthControllerTest.java",
+        "sha256": "525fc5576ff7bd3e25c1c78a5196dd7f6f0e1f77c03b7235ff179119ac53e4a8",
+        "version": "0.1.0"
+      }
+    ]
+  }
+}

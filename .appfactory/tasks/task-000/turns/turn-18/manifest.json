@@ -1,0 +1,106 @@
+{
+  "turnId": 18,
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-18/execution_trace.json",
+    "skillsExecuted": [
+      "session-start",
+      "turn-end",
+      "turn-init"
+    ],
+    "agentsExecuted": [
+      "codex"
+    ]
+  },
+  "tasks": [
+    {
+      "taskId": "T18-1",
+      "agent": "repository-analyst",
+      "inputs": [
+        "ai/agentic-pipeline/turns/",
+        "ai/agentic-pipeline/turns_index.csv"
+      ],
+      "outputs": [
+        {
+          "path": "docs/development-summary.md",
+          "sha256": "4b78282ca90944caec80d2b7e8e75837c96baff7813bee02db5570260a5d5458"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-18/turn_context.md",
+          "sha256": "5ee99a91c997d35b8e4d4f972b98952db8b9de8cba7830b9d98ccc03ef8fc07b"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-18/execution_trace.json",
+          "sha256": "3e5d9363acedb4fcdcf14355dd490fd946df12635c91f3f2573446e1e61d0b52"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-18/pull_request.md",
+          "sha256": "e9edda2e032885843eb99ea1a278423da6746b0533a4ed4c59ad00aef22d6c96"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns/turn-18/adr.md",
+          "sha256": "19514b9c2fe550eaf948b74c78122ce026d3b2d3398e635b48fb43442cb2183b"
+        },
+        {
+          "path": "ai/agentic-pipeline/turns_index.csv",
+          "sha256": "9fd8dc04b49d2e9f04f581691ec9a70cd4e916c826022f8f92a88809151fd8b2"
+        }
+      ],
+      "validations": [
+        {
+          "rule": "history-audit",
+          "status": "passed",
+          "detailsPath": ""
+        },
+        {
+          "rule": "index-cross-check",
+          "status": "passed",
+          "detailsPath": ""
+        },
+        {
+          "rule": "tests-pass",
+          "status": "skipped",
+          "detailsPath": ""
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "promptHash": "e85cb2bc0e85fa6f41e07a090790162b106499197bbfe8c599d0cad0fe527b8f",
+    "tools": [
+      "Bash",
+      "Edit",
+      "Read",
+      "Grep"
+    ],
+    "startedAt": "2026-03-29T19:03:01Z",
+    "finishedAt": "2026-03-29T19:06:42Z",
+    "activePatternName": "N/A",
+    "activePatternPath": "N/A"
+  },
+  "outputs": [
+    {
+      "path": "docs/development-summary.md",
+      "sha256": "4b78282ca90944caec80d2b7e8e75837c96baff7813bee02db5570260a5d5458"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-18/turn_context.md",
+      "sha256": "5ee99a91c997d35b8e4d4f972b98952db8b9de8cba7830b9d98ccc03ef8fc07b"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-18/execution_trace.json",
+      "sha256": "3e5d9363acedb4fcdcf14355dd490fd946df12635c91f3f2573446e1e61d0b52"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-18/pull_request.md",
+      "sha256": "e9edda2e032885843eb99ea1a278423da6746b0533a4ed4c59ad00aef22d6c96"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-18/adr.md",
+      "sha256": "19514b9c2fe550eaf948b74c78122ce026d3b2d3398e635b48fb43442cb2183b"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns_index.csv",
+      "sha256": "9fd8dc04b49d2e9f04f581691ec9a70cd4e916c826022f8f92a88809151fd8b2"
+    }
+  ]
+}

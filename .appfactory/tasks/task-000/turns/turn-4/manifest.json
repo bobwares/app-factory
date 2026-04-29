@@ -1,0 +1,51 @@
+{
+  "turnId": "4",
+  "createdAt": "2026-03-28T19:27:34Z",
+  "profile": "container-typescript-nestjs",
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-4/execution_trace.json",
+    "skillsExecuted": ["session-start", "turn-end", "turn-init"],
+    "agentsExecuted": ["claude"]
+  },
+  "artifacts": {
+    "turnArtifacts": [
+      {
+        "path": "ai/agentic-pipeline/turns/turn-4/turn_context.md",
+        "type": "context"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-4/execution_trace.json",
+        "type": "trace"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-4/pull_request.md",
+        "type": "pr"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-4/adr.md",
+        "type": "adr"
+      },
+      {
+        "path": "ai/agentic-pipeline/turns/turn-4/manifest.json",
+        "type": "manifest"
+      }
+    ],
+    "sourceFiles": [
+      {
+        "path": "tech-stack-implementations/backend/container-typescript-nestjs/package.json",
+        "sha256": "5a707c49f7f677de77dc3f9cbd37c8cad8c84449d25dd6c06873ccad2e598920",
+        "version": "0.1.0"
+      },
+      {
+        "path": "tech-stack-implementations/backend/container-typescript-nestjs/src/main.ts",
+        "sha256": "64006cb2024877df1ac050bd22a0967d8a690a8d7366f3eff2c042b162c4784f",
+        "version": "0.1.0"
+      },
+      {
+        "path": "tech-stack-implementations/backend/container-typescript-nestjs/Dockerfile",
+        "sha256": "5599e2f38f23082acd782fd8f8e03e877a1517f6b30aa49f5a9663eecb2063c9",
+        "version": "0.1.0"
+      }
+    ]
+  }
+}

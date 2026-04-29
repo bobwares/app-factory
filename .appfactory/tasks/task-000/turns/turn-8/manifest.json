@@ -1,0 +1,37 @@
+{
+  "turnId": 8,
+  "generatedAt": "2026-03-28T21:21:30Z",
+  "agent": "AI Coding Agent (Codex)",
+  "execution": {
+    "tracePath": "./ai/agentic-pipeline/turns/turn-8/execution_trace.json",
+    "skillsExecuted": ["branch-guard", "session-start", "turn-end", "turn-init"],
+    "agentsExecuted": ["codex"]
+  },
+  "outputs": [
+    {
+      "path": ".gitignore",
+      "type": "config",
+      "sha256": "2e503f897971772799a0895b0453ce80b0f5d9bdbbb7228e40f595a55366a423"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-8/turn_context.md",
+      "type": "turn-artifact",
+      "sha256": "f2d64f141b91de803b8ed35e3a422096e37f2744ab9b18d532c7dc52ac5bbe60"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-8/execution_trace.json",
+      "type": "turn-artifact",
+      "sha256": "21a0de968427213c308d4bc6803dc63d71b74b371d4282ec3772894369761754"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-8/pull_request.md",
+      "type": "turn-artifact",
+      "sha256": "26b359bd800106fbc908f59fb0fd6a9706ff1e3133562abafd6f93c7ed7e10d2"
+    },
+    {
+      "path": "ai/agentic-pipeline/turns/turn-8/adr.md",
+      "type": "turn-artifact",
+      "sha256": "475e95b13847adfd58ca337ac4a416bea899818abd784261cfc31be184c48a57"
+    }
+  ]
+}

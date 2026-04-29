@@ -1,0 +1,10 @@
+{
+  "taskId": "003",
+  "branch": "task/T003",
+  "baseBranch": "main",
+  "status": "pr-open",
+  "createdAt": "2026-04-02T06:17:46Z",
+  "closedAt": null,
+  "pullRequestUrl": "https://github.com/bobwares/app-factory/pull/8",
+  "totalTurns": 3
+}

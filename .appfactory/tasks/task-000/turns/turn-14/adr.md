@@ -1,0 +1,1 @@
+No architectural decision made this turn — extracted documentation data from the deployed Serverless Land Nuxt bundle because the underlying pattern JSON files are bundled into the client app rather than served as directly fetchable public endpoints.
